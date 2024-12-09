@@ -1,11 +1,135 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navbar from "../components/navbar.jsx";
+import "../assets/main.css";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore my complete web development portfolio and discover how I transform ideas into impactful digital experiences."
+    />
+    <link rel="shortcut icon" type="image/x-icon" href="/icono.ico">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <title>Renzo Roggiapane - Portfolio</title>
+  </head>
+  <body>
+    <Navbar client:load />
+
+    <div class="inicio">
+      <div class="containerTitle">
+        <div class="titleText">
+          <h1>Hello, I am Renzo Roggiapane.</h1>
+          <h2 id="typing-text">I am a full-stack web developer</h2>
+        </div>
+      </div>
+      <div class="containerImg">
+        <img src="logo.webp" />
+      </div>
+      <div class="scroll-down">
+        <a href="#aboutSection"><i class="fas fa-chevron-down"></i></a>
+      </div>
+    </div>
+    <div class="inicio2">
+      <div class="containerAbout" id="aboutSection">
+        <div class="aboutText">
+          <h1>About me</h1>
+          <h5>
+            I am passionate about technology, creativity and problem solving. I
+            excel in web development, interface design and creation of
+            interactive applications, always looking for innovative and
+            functional solutions.
+          </h5>
+        </div>
+        <div class="studies">
+          <h1>Studies</h1>
+          <h5>
+            I am currently studying at the Instituto Parroquial Industrial
+            Cristo Obrero, a technical education institution.
+          </h5>
+        </div>
+      </div>
+      <div class="certifications">
+        <img src="webdesing.webp" class="image" />
+      </div>
+      <div id="imageModal" class="modal">
+        <span class="close"><i class="fas fa-chevron-down"></i></span>
+        <img class="modal-content" id="modalImage" />
+        <div id="caption"></div>
+      </div>
+    </div>
+    <div class="inicio3">
+      <h1>My Projects</h1>
+      <div class="containerProyectos">
+        <div class="cardProject">
+          <img src="rglibrary.webp" alt="Project Image" />
+          <h2>RgLibrary</h2>
+          <p>Game gallery website</p>
+          <div class="tech-icons">
+              <i class="fab fa-html5" title="HTML5"></i>
+              <i class="fab fa-css3-alt" title="CSS3"></i>
+              <i class="fab fa-bootstrap" title="Bootstrap"></i>
+          </div>
+          <div class="buttons">
+              <a href="#" target="_blank" class="view-project">View Project</a>
+              <a href="#" target="_blank" class="github-link">GitHub</a>
+          </div>
+      </div>
+      <div class="cardProject">
+          <img src="clima.webp" alt="Project Image" />
+          <h2>Weather App</h2>
+          <p>Weather application with API consumption</p>
+          <div class="tech-icons">
+              <i class="fab fa-html5" title="HTML5"></i>
+              <i class="fab fa-css3-alt" title="CSS3"></i>
+              <i class="fab fa-js" title="JavaScript"></i>
+              <i class="fas fa-cloud" title="API"></i>
+          </div>
+          <div class="buttons">
+              <a href="#" target="_blank" class="view-project">View Project</a>
+              <a href="#" target="_blank" class="github-link">GitHub</a>
+          </div>
+      </div>
+      <div class="cardProject">
+          <img src="tarjetas.webp" alt="Project Image" />
+          <h2>Card Generator</h2>
+          <p>Page to generate personalized cards</p>
+          <div class="tech-icons">
+              <i class="fab fa-html5" title="HTML5"></i>
+              <i class="fab fa-css3-alt" title="CSS3"></i>
+              <i class="fab fa-js" title="JavaScript"></i>
+          </div>
+          <div class="buttons">
+              <a href="#" target="_blank" class="view-project">View Project</a>
+              <a href="#" target="_blank" class="github-link">GitHub</a>
+          </div>
+      </div>
+      
+    </div>
+    </div>
+    
+    </div>
+  </body>
+</html>
+<script src="../components/imgzoom.js"></script>
+<script>
+  function addface() {
+    const typingText = document.getElementById("typing-text");
+    setTimeout(() => {
+      typingText.innerHTML += " :)";
+      setTimeout(() => {
+        typingText.innerHTML = typingText.innerHTML.replace(" :)", "");
+      }, 4000);
+    }, 10000);
+  }
+  window.onload = function () {
+    addface();
+  };
+</script>
