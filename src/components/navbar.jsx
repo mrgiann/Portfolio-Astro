@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import '../assets/navbar.css';
 
 const themes = {
-  moon: ['#101214', '#0B0C0D', '#FFFFFF', '#143F3A', '#d2d438', '#1D7AFC'],
-  sun: ['#F7F8F9', '#F1F2F4', ' #101214', '#247067', '#d2d438', '#1D7AFC'],
-  sunset: ['#151C19', '#2F3834', '#424F4A', '#C0AB92', '#101214', '#1D7AFC'],
-  sunrise: ['#FFDAB9', '#D7C9C6', '#FFFFFF', '#4F2733', '#685844', '#A04D66'],
+  moon: [' #0B0C0D', ' #0F0F0F', ' #181818', ' #ffffff', ' #020202', ' #9e9e9e', ' #d2d438', ' #333333', ' #333333'],
+  sun: [' #cccccc', ' #ffffff', ' #cecece', ' #000000', ' #020202', ' #494949', ' #4CAF50', ' #CCCCCC', '#c9c9c9'],
+  sunset: [' #202b26', ' #3c4d45', ' #597065', ' #ffffff', ' #020202', ' #a4b68d', ' #d2d438', ' #767c58', 'rgb(102, 129, 116)'],
+  sunrise: [' #F08080', ' #F4978E', ' #be766f', 'rgb(0, 0, 0)', ' #020202', 'rgb(63, 50, 50)', ' #1D7AFC', ' #F8AD9D', 'rgb(190, 119, 112)'],
 };
 
 const ColorCircles = ({ theme }) => {
@@ -55,12 +55,41 @@ const Navbar = () => {
 
   const changeTheme = (theme) => {
     setSelectedTheme(theme);
+    updateThemeStyles(theme);
     setIsThemeOpen(false);
   };
 
   const changeLanguage = (language) => {
-    setSelectedLanguage(language); // Cambiar el idioma
+    setSelectedLanguage(language);
     setIsLanguageOpen(false);
+  };
+
+  const themeImages = {
+    moon: 'logo.webp',
+    sun: 'logoclaro.webp',
+    sunset: 'logoatardecer.webp',
+    sunrise: 'logoamanecer.webp',
+  };
+
+  // Función para actualizar las variables de CSS según el tema seleccionado
+  const updateThemeStyles = (theme) => {
+    const colors = themes[theme];
+    document.documentElement.style.setProperty('--color-navbar', colors[0]);
+    document.documentElement.style.setProperty('--color-fondo', colors[1]);
+    document.documentElement.style.setProperty('--color-fondo-card', colors[2]);
+    document.documentElement.style.setProperty('--color-texto', colors[3]);
+    document.documentElement.style.setProperty('--color-fondo-menu', colors[4]);
+    document.documentElement.style.setProperty('--color-text-secundario', colors[5]);
+    document.documentElement.style.setProperty('--color-scroll-down-hover', colors[5]);
+    document.documentElement.style.setProperty('--color-texto-titulo', colors[6]);
+    document.documentElement.style.setProperty('--color-fondo-titulos', colors[7]);
+    document.documentElement.style.setProperty('--color-scroll-down', colors[8]);
+  
+    // Cambiar la imagen del contenedor
+    const imgElement = document.querySelector('.containerImg img');
+    if (imgElement && themeImages[theme]) {
+      imgElement.src = themeImages[theme];
+    }
   };
 
   return (
@@ -73,10 +102,10 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="container">
           <div className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
-            <a href="#">
-              <button onClick={closeMenus}>Home</button>
+            <a href="#about">
+              <button onClick={closeMenus}>About</button>
             </a>
-            <a href="#proyectos">
+            <a href="#projects">
               <button onClick={closeMenus}>Projects</button>
             </a>
             <a href="#habilidades">
@@ -100,7 +129,7 @@ const Navbar = () => {
                 onClick={toggleThemeMenu}
               />
               <div className={`theme-options ${isThemeOpen ? 'open' : ''}`}>
-              <div className="theme-title">Theme</div>
+                <div className="theme-title">Theme</div>
                 <div className="theme-option" onClick={() => changeTheme('moon')}>
                   <img src="moon.webp" alt="Moon" />
                   <span>Moon</span>
@@ -134,49 +163,48 @@ const Navbar = () => {
                 />
               </div>
               <div className={`language-options ${isLanguageOpen ? 'open' : ''}`}>
-              <div className="language-title">Language</div>
-              <label>
-                <input
-                  type="radio"
-                  value="english"
-                  checked={selectedLanguage === 'english'} // Estado controlado
-                  onChange={() => changeLanguage('english')}
-                />
-                <img src="reinounido.webp" alt="English" />
-                English
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  value="french"
-                  checked={selectedLanguage === 'french'} // Estado controlado
-                  onChange={() => changeLanguage('french')}
-                />
-                <img src="francia.webp" alt="Français" />
-                Français
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  value="portuguese"
-                  checked={selectedLanguage === 'portuguese'} // Estado controlado
-                  onChange={() => changeLanguage('portuguese')}
-                />
-                <img src="portugal.webp" alt="Português" />
-                Português
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  value="spanish"
-                  checked={selectedLanguage === 'spanish'} // Estado controlado
-                  onChange={() => changeLanguage('spanish')}
-                />
-                <img src="espana.webp" alt="Español" />
-                Español
-              </label>
-            </div>
-
+                <div className="language-title">Language</div>
+                <label>
+                  <input
+                    type="radio"
+                    value="english"
+                    checked={selectedLanguage === 'english'} // Estado controlado
+                    onChange={() => changeLanguage('english')}
+                  />
+                  <img src="reinounido.webp" alt="English" />
+                  English
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    value="french"
+                    checked={selectedLanguage === 'french'} // Estado controlado
+                    onChange={() => changeLanguage('french')}
+                  />
+                  <img src="francia.webp" alt="Français" />
+                  Français
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    value="portuguese"
+                    checked={selectedLanguage === 'portuguese'} // Estado controlado
+                    onChange={() => changeLanguage('portuguese')}
+                  />
+                  <img src="portugal.webp" alt="Português" />
+                  Português
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    value="spanish"
+                    checked={selectedLanguage === 'spanish'} // Estado controlado
+                    onChange={() => changeLanguage('spanish')}
+                  />
+                  <img src="espana.webp" alt="Español" />
+                  Español
+                </label>
+              </div>
             </div>
           </div>
         </div>

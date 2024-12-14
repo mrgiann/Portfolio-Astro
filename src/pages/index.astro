@@ -13,7 +13,7 @@ import "../assets/main.css";
       name="description"
       content="Explore my complete web development portfolio and discover how I transform ideas into impactful digital experiences."
     />
-    <link rel="shortcut icon" type="image/x-icon" href="/icono.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/icono.ico" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -32,93 +32,176 @@ import "../assets/main.css";
       </div>
       <div class="containerImg">
         <img src="logo.webp" />
+        <video autoplay muted></video>
       </div>
       <div class="scroll-down">
         <a href="#aboutSection"><i class="fas fa-chevron-down"></i></a>
       </div>
     </div>
     <div class="inicio2">
-      <div class="containerAbout" id="aboutSection">
-        <div class="aboutText">
-          <h1>About me</h1>
-          <h5>
-            I am passionate about technology, creativity and problem solving. I
-            excel in web development, interface design and creation of
-            interactive applications, always looking for innovative and
-            functional solutions.
-          </h5>
+      <div id="about">
+        <div class="containerAbout" id="aboutSection">
+          <div class="aboutText">
+            <h1>About me</h1>
+            <h5>
+              I am passionate about technology, creativity and problem solving.
+              I excel in web development, interface design and creation of
+              interactive applications, always looking for innovative and
+              functional solutions.
+            </h5>
+          </div>
+          <div class="studies">
+            <h1>Studies</h1>
+            <h5>
+              I am currently studying at the Instituto Parroquial Industrial
+              Cristo Obrero.
+            </h5>
+          </div>
         </div>
-        <div class="studies">
-          <h1>Studies</h1>
-          <h5>
-            I am currently studying at the Instituto Parroquial Industrial
-            Cristo Obrero, a technical education institution.
-          </h5>
+        <div class="certifications">
+          <img src="webdesing.webp" class="image" />
         </div>
-      </div>
-      <div class="certifications">
-        <img src="webdesing.webp" class="image" />
-      </div>
-      <div id="imageModal" class="modal">
-        <span class="close"><i class="fas fa-chevron-down"></i></span>
-        <img class="modal-content" id="modalImage" />
-        <div id="caption"></div>
+        <div id="imageModal" class="modal">
+          <span class="close"><i class="fas fa-chevron-down"></i></span>
+          <img class="modal-content" id="modalImage" />
+          <div id="caption"></div>
+        </div>
       </div>
     </div>
     <div class="inicio3">
-      <h1>My Projects</h1>
-      <div class="containerProyectos">
-        <div class="cardProject">
-          <img src="rglibrary.webp" alt="Project Image" />
-          <h2>RgLibrary</h2>
-          <p>Game gallery website</p>
-          <div class="tech-icons">
-              <i class="fab fa-html5" title="HTML5"></i>
-              <i class="fab fa-css3-alt" title="CSS3"></i>
-              <i class="fab fa-bootstrap" title="Bootstrap"></i>
+      <div id="projects">
+        <h1>My Projects</h1>
+        <div class="containerProyectos">
+          <div class="cardProject">
+            <div class="containerImage">
+              <img src="rglibrary.webp" alt="Project Image" />
+              <div class="buttons">
+                <a
+                  href="https://rglibrary.netlify.app/"
+                  target="_blank"
+                  class="view-project"
+                  ><i class="fas fa-external-link-alt"></i> Visit</a
+                >
+                <a
+                  href="https://github.com/mrgiann/RgLibrary"
+                  target="_blank"
+                  class="github-link"><i class="fab fa-github"></i> GitHub</a
+                >
+              </div>
+            </div>
+            <div class="containerCard">
+              <div class="containerTextCard">
+                <h2>RgLibrary</h2>
+                <p>Website with game gallery.</p>
+              </div>
+              <div class="containerIconsCard">
+                <div class="tech-icons">
+                  <i class="fab fa-html5" title="HTML5"></i>
+                  <i class="fab fa-css3-alt" title="CSS3"></i>
+                  <i class="fab fa-bootstrap" title="Bootstrap"></i>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="buttons">
-              <a href="#" target="_blank" class="view-project">View Project</a>
-              <a href="#" target="_blank" class="github-link">GitHub</a>
+          <div class="cardProject">
+            <div class="containerImage">
+              <img src="clima.webp" alt="Project Image" />
+              <div class="buttons">
+                <a
+                  href="https://mrgiann.github.io/Weather-app/"
+                  target="_blank"
+                  class="view-project"
+                  ><i class="fas fa-external-link-alt"></i> Visit</a
+                >
+                <a
+                  href="https://github.com/mrgiann/Weather-app"
+                  target="_blank"
+                  class="github-link"><i class="fab fa-github"></i> GitHub</a
+                >
+              </div>
+            </div>
+            <div class="containerCard">
+              <div class="containerTextCard">
+                <h2>Weather App</h2>
+                <p>Weather application with API consumption.</p>
+              </div>
+              <div class="containerIconsCard">
+                <div class="tech-icons">
+                  <i class="fab fa-html5" title="HTML5"></i>
+                  <i class="fab fa-css3-alt" title="CSS3"></i>
+                  <i class="fab fa-js" title="JavaScript"></i>
+                  <i class="fas fa-cloud" title="API"></i>
+                </div>
+              </div>
+            </div>
           </div>
+          <div class="cardProject">
+            <div class="containerImage">
+              <img src="tarjetas.webp" alt="Project Image" />
+              <div class="buttons">
+                <a
+                  href="https://card-generator-renzo.netlify.app/"
+                  target="_blank"
+                  class="view-project"
+                  ><i class="fas fa-external-link-alt"></i> Visit</a
+                >
+                <a
+                  href="https://github.com/mrgiann/Card-generator"
+                  target="_blank"
+                  class="github-link"><i class="fab fa-github"></i> GitHub</a
+                >
+              </div>
+            </div>
+            <div class="containerCard">
+              <div class="containerTextCard">
+                <h2>Card Generator</h2>
+                <p>Simple form to generate a card with the entered text.</p>
+              </div>
+              <div class="containerIconsCard">
+                <div class="tech-icons">
+                    <i class="fab fa-html5" title="HTML5"></i>
+                    <i class="fab fa-css3-alt" title="CSS3"></i>
+                    <i class="fab fa-js" title="JavaScript"></i>
+                    <i class="fab fa-react" title="React"></i>
+                </div>
+            </div>    
+            </div>
+          </div>
+          <div class="cardProject">
+            <div class="containerImage">
+              <img src="instagramlogin.webp" alt="Project Image" />
+              <div class="buttons">
+                <a
+                  href="https://test-ig-login.netlify.app/"
+                  target="_blank"
+                  class="view-project"
+                  ><i class="fas fa-external-link-alt"></i> Visit</a
+                >
+              </div>
+            </div>
+            <div class="containerCard">
+              <div class="containerTextCard">
+                <h2>Instagram Login</h2>
+                <p>
+                  Recreation of the Instagram login form, for educational and
+                  practical purposes.
+                </p>
+              </div>
+              <div class="containerIconsCard">
+                <div class="tech-icons">
+                  <i class="fab fa-html5" title="HTML5"></i>
+                  <i class="fab fa-css3-alt" title="CSS3"></i>
+                  <i class="fab fa-js" title="JavaScript"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="cardProject">
-          <img src="clima.webp" alt="Project Image" />
-          <h2>Weather App</h2>
-          <p>Weather application with API consumption</p>
-          <div class="tech-icons">
-              <i class="fab fa-html5" title="HTML5"></i>
-              <i class="fab fa-css3-alt" title="CSS3"></i>
-              <i class="fab fa-js" title="JavaScript"></i>
-              <i class="fas fa-cloud" title="API"></i>
-          </div>
-          <div class="buttons">
-              <a href="#" target="_blank" class="view-project">View Project</a>
-              <a href="#" target="_blank" class="github-link">GitHub</a>
-          </div>
-      </div>
-      <div class="cardProject">
-          <img src="tarjetas.webp" alt="Project Image" />
-          <h2>Card Generator</h2>
-          <p>Page to generate personalized cards</p>
-          <div class="tech-icons">
-              <i class="fab fa-html5" title="HTML5"></i>
-              <i class="fab fa-css3-alt" title="CSS3"></i>
-              <i class="fab fa-js" title="JavaScript"></i>
-          </div>
-          <div class="buttons">
-              <a href="#" target="_blank" class="view-project">View Project</a>
-              <a href="#" target="_blank" class="github-link">GitHub</a>
-          </div>
-      </div>
-      
-    </div>
-    </div>
-    
     </div>
   </body>
 </html>
-<script src="../components/imgzoom.js"></script>
+<script src="../components/scripts.js"></script>
 <script>
   function addface() {
     const typingText = document.getElementById("typing-text");
