@@ -132,16 +132,16 @@ const Navbar = () => {
         <div className="container">
           <div className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
             <a href="#about">
-              <button onClick={closeMenus}>About</button>
+              <button id='about-navbar' onClick={closeMenus}>About</button>
             </a>
             <a href="#projects">
-              <button onClick={closeMenus}>Projects</button>
+              <button id='projects-navbar' onClick={closeMenus}>Projects</button>
             </a>
             <a href="#skills">
-              <button onClick={closeMenus}>Skills</button>
+              <button id='skills-navbar' onClick={closeMenus}>Skills</button>
             </a>
             <a href="#contact">
-              <button onClick={closeMenus}>Contact</button>
+              <button id='contact-navbar' onClick={closeMenus}>Contact</button>
             </a>
           </div>
 
@@ -158,25 +158,25 @@ const Navbar = () => {
                 onClick={toggleThemeMenu}
               />
               <div className={`theme-options ${isThemeOpen ? 'open' : ''}`}>
-                <div className="theme-title">Theme</div>
+                <div id='theme-navbar' className="theme-title">Theme</div>
                 <div className="theme-option" onClick={() => changeTheme('moon')}>
                   <img src="moon.webp" alt="Moon" />
-                  <span>Moon</span>
+                  <span id='moon-navbar'>Moon</span>
                   <ColorCircles theme="moon" />
                 </div>
                 <div className="theme-option" onClick={() => changeTheme('sun')}>
                   <img src="sun.webp" alt="Sun" />
-                  <span>Sun</span>
+                  <span id='sun-navbar'>Sun</span>
                   <ColorCircles theme="sun" />
                 </div>
                 <div className="theme-option" onClick={() => changeTheme('sunset')}>
                   <img src="sunset.webp" alt="Sunset" />
-                  <span>Sunset</span>
+                  <span id='sunset-navbar'>Sunset</span>
                   <ColorCircles theme="sunset" />
                 </div>
                 <div className="theme-option" onClick={() => changeTheme('sunrise')}>
                   <img src="sunrise.webp" alt="Sunrise" />
-                  <span>Sunrise</span>
+                  <span id='sunrise-navbar'>Sunrise</span>
                   <ColorCircles theme="sunrise" />
                 </div>
               </div>
@@ -192,7 +192,7 @@ const Navbar = () => {
                 />
               </div>
               <div className={`language-options ${isLanguageOpen ? 'open' : ''}`}>
-                <div className="language-title">Language</div>
+                <div id='language-navbar' className="language-title">Language</div>
                 <label>
                   <input
                     type="radio"

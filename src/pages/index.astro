@@ -20,7 +20,7 @@ import "aos/dist/aos.css";
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    <title>Renzo Roggiapane - Portfolio</title>
+    <title id="title-site">Renzo Roggiapane - Portfolio</title>
   </head>
   <body>
     <Navbar client:load />
@@ -28,7 +28,7 @@ import "aos/dist/aos.css";
     <div class="inicio">
       <div class="containerTitle">
         <div class="titleText">
-          <h1>Hello! I'm Renzo Roggiapane,</h1>
+          <h1 id="title">Hello! I'm Renzo Roggiapane,</h1>
           <h2 id="typing-text">a full-stack web developer.</h2>
           <div class="social-links-title">
             <a
@@ -60,8 +60,8 @@ import "aos/dist/aos.css";
       <div id="about">
         <div class="containerAbout" id="aboutSection">
           <div class="aboutText">
-            <h1 data-aos="fade-up" data-aos-delay="100">About me</h1>
-            <h5 data-aos="fade-up" data-aos-delay="100">
+            <h1 id="about-me" data-aos="fade-up" data-aos-delay="100">About me</h1>
+            <h5 id="about-me-text" data-aos="fade-up" data-aos-delay="100">
               I am passionate about technology, creativity and problem solving.
               I excel in web development, interface design and creation of
               interactive applications, always looking for innovative and
@@ -69,8 +69,8 @@ import "aos/dist/aos.css";
             </h5>
           </div>
           <div class="studies">
-            <h1 data-aos="fade-up" data-aos-delay="100">Studies</h1>
-            <h5 data-aos="fade-up" data-aos-delay="100">
+            <h1 id="studies" data-aos="fade-up" data-aos-delay="100">Studies</h1>
+            <h5 id="studies-text" data-aos="fade-up" data-aos-delay="100">
               I am currently studying at the Instituto Parroquial Industrial
               Cristo Obrero.
             </h5>
@@ -88,17 +88,17 @@ import "aos/dist/aos.css";
     </div>
     <div class="inicio3">
       <div id="projects">
-        <h1 data-aos="fade-up" data-aos-delay="100">My Projects</h1>
+        <h1 id="my-projects" data-aos="fade-up" data-aos-delay="100">My Projects</h1>
         <div class="containerProyectos">
           <div data-aos="fade-up" data-aos-delay="100"  class="cardProject">
             <div class="containerImage">
-              <img src="tarjetas.webp" alt="Project Image" />
+              <img src="tarjetas.webp" alt="Card Generator" />
               <div class="buttons">
                 <a
                   href="https://card-generator-renzo.netlify.app/"
                   target="_blank"
                   class="view-project"
-                  ><i class="fas fa-external-link-alt"></i> Visit</a
+                  ><i class="fas fa-external-link-alt"></i id="visit"> Visit</a
                 >
                 <a
                   href="https://github.com/mrgiann/Card-generator"
@@ -109,8 +109,8 @@ import "aos/dist/aos.css";
             </div>
             <div class="containerCard">
               <div class="containerTextCard">
-                <h2>Card Generator</h2>
-                <p>Simple form to generate a card with the entered text.</p>
+                <h2 id="card-generator">Card Generator</h2>
+                <p id="card-generator-text">Simple form to generate a card with the entered text.</p>
               </div>
               <div class="containerIconsCard">
                 <div class="tech-icons">
@@ -124,13 +124,13 @@ import "aos/dist/aos.css";
           </div>
           <div data-aos="fade-up" data-aos-delay="100"  class="cardProject">
             <div class="containerImage">
-              <img src="clima.webp" alt="Project Image" />
+              <img src="clima.webp" alt="Weather App" />
               <div class="buttons">
                 <a
                   href="https://mrgiann.github.io/Weather-app/"
                   target="_blank"
                   class="view-project"
-                  ><i class="fas fa-external-link-alt"></i> Visit</a
+                  ><i class="fas fa-external-link-alt"></i id="visit"> Visit</a
                 >
                 <a
                   href="https://github.com/mrgiann/Weather-app"
@@ -141,8 +141,8 @@ import "aos/dist/aos.css";
             </div>
             <div class="containerCard">
               <div class="containerTextCard">
-                <h2>Weather App</h2>
-                <p>Weather application with API consumption.</p>
+                <h2 id="wheather-app">Weather App</h2>
+                <p id="wheather-app-text">Weather application with API consumption.</p>
               </div>
               <div class="containerIconsCard">
                 <div class="tech-icons">
@@ -156,13 +156,13 @@ import "aos/dist/aos.css";
           </div>
           <div data-aos="fade-up" data-aos-delay="100"  class="cardProject">
             <div class="containerImage">
-              <img src="rglibrary.webp" alt="Project Image" />
+              <img src="rglibrary.webp" alt="RgLibrary" />
               <div class="buttons">
                 <a
                   href="https://rglibrary.netlify.app/"
                   target="_blank"
                   class="view-project"
-                  ><i class="fas fa-external-link-alt"></i> Visit</a
+                  ><i class="fas fa-external-link-alt"></i id="visit"> Visit</a
                 >
                 <a
                   href="https://github.com/mrgiann/RgLibrary"
@@ -173,8 +173,8 @@ import "aos/dist/aos.css";
             </div>
             <div class="containerCard">
               <div class="containerTextCard">
-                <h2>RgLibrary</h2>
-                <p>Website with game gallery.</p>
+                <h2 id="rglibrary">RgLibrary</h2>
+                <p id="rglibrary-text">Website with game gallery.</p>
               </div>
               <div class="containerIconsCard">
                 <div class="tech-icons">
@@ -187,20 +187,20 @@ import "aos/dist/aos.css";
           </div>
           <div data-aos="fade-up" data-aos-delay="100"  class="cardProject">
             <div class="containerImage">
-              <img src="instagramlogin.webp" alt="Project Image" />
+              <img src="instagramlogin.webp" alt="Instagram Login" />
               <div class="buttons">
                 <a
                   href="https://test-ig-login.netlify.app/"
                   target="_blank"
                   class="view-project"
-                  ><i class="fas fa-external-link-alt"></i> Visit</a
+                  ><i class="fas fa-external-link-alt"></i id="visit"> Visit</a
                 >
               </div>
             </div>
             <div class="containerCard">
               <div class="containerTextCard">
-                <h2>Instagram Login</h2>
-                <p>
+                <h2 id="instagram-login">Instagram Login</h2>
+                <p id="instagram-login-text">
                   Recreation of the Instagram login form, for educational and
                   practical purposes.
                 </p>
@@ -219,48 +219,66 @@ import "aos/dist/aos.css";
     </div>
     <div class="inicio4">
       <div id="skills">
-        <h1 data-aos="fade-up" data-aos-delay="100" >Skills</h1>
+        <h1 id="skills-title" data-aos="fade-up" data-aos-delay="100" >Skills</h1>
         <div class="grid-container">
           <div class="containerfrontend">
             <div class="containerhr">
               <h2 data-aos="fade-up" data-aos-delay="100">Frontend</h2><hr data-aos="fade-up" data-aos-delay="100"/>
             </div>
             <div class="frontend">
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/html5.svg" alt="HTML5" />
                 <p>HTML5</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/css.svg" alt="CSS" />
                 <p>CSS</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/bootstrap.svg" alt="Bootstrap" />
                 <p>Bootstrap</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/tailwind.svg" alt="Tailwind" />
                 <p>Tailwind</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/javascript.svg" alt="JavaScript" />
                 <p>JavaScript</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/react.svg" alt="React" />
                 <p>React</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/vite.svg" alt="React" />
                 <p>Vite</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/angular.svg" alt="Angular" />
                 <p>Angular</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/astro.svg" alt="Astro" />
                 <p>Astro</p>
+              </div>
               </div>
             </div>
           </div>
@@ -269,44 +287,60 @@ import "aos/dist/aos.css";
               <h2 data-aos="fade-up" data-aos-delay="100">Backend</h2><hr data-aos="fade-up" data-aos-delay="100"/>
             </div>
             <div class="backend">
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/nodejs.svg" alt="Node.js" />
                 <p>Node.js</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/express.svg" alt="Node.js" />
                 <p>Express.js</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/mongodb.svg" alt="MongoDB" />
                 <p>MongoDB</p>
+              </div>
               </div>
             </div>
           </div>
           <div class="containerothers">
             <div class="containerhr">
-              <h2 data-aos="fade-up" data-aos-delay="100">Other</h2><hr data-aos="fade-up" data-aos-delay="100"/>
+              <h2 id="other" data-aos="fade-up" data-aos-delay="100">Other</h2><hr data-aos="fade-up" data-aos-delay="100"/>
             </div>
             <div class="others">
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/git.svg" alt="Git" />
                 <p>Git</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/github.svg" alt="GitHub" />
                 <p>GitHub</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/openai.svg" alt="OpenAI" />
                 <p>ChatGPT</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/visualstudio.svg" alt="Visual Studio" />
                 <p>Visual Studio</p>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200" class="icon">
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+              <div class="icon">
                 <img src="/public/SVG/sublimetext.svg" alt="Sublime Text" />
                 <p>Sublime Text</p>
+              </div>
               </div>
             </div>
           </div>
@@ -349,12 +383,11 @@ import "aos/dist/aos.css";
               readonly
             />
             <button id="copy-btn"
-              ><i class="fa fa-copy" style="margin-right: 5px;"></i><span
-                >Copy</span
+              ><i class="fa fa-copy" style="margin-right: 5px;"></i><span id="copy">Copy</span
               ></button
             >
           </div>
-          <p class="thank-you">Thank you for visiting my portfolio!</p>
+          <p id="thanks-you" class="thank-you">Thank you for visiting my portfolio!</p>
         </div>
       </div>
     </footer>
