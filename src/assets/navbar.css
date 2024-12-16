@@ -397,6 +397,12 @@
   transform: scale(1.1);
 }
 
+.theme-input {
+  filter: var(--theme-input-filter, none);
+  transition: filter 0.3s ease; /* Transición suave al cambiar el tema */
+}
+
+
 .theme-input:hover{
   transition: transform 0.3s ease;
   transform: scale(1.1);

@@ -3,9 +3,16 @@ import '../assets/navbar.css';
 
 const themes = {
   moon: [' #0B0C0D', ' #0F0F0F', ' #181818', ' #ffffff', ' #020202', ' #9e9e9e', ' #d2d438', ' #333333', ' #333333'],
-  sun: [' #cccccc', ' #ffffff', ' #cecece', ' #000000', ' #020202', ' #494949', ' #4CAF50', ' #CCCCCC', '#c9c9c9'],
-  sunset: [' #202b26', ' #3c4d45', ' #597065', ' #ffffff', ' #020202', ' #a4b68d', ' #d2d438', ' #767c58', 'rgb(102, 129, 116)'],
-  sunrise: [' #F08080', ' #F4978E', ' #be766f', 'rgb(0, 0, 0)', ' #020202', 'rgb(63, 50, 50)', ' #1D7AFC', ' #F8AD9D', 'rgb(190, 119, 112)'],
+  sun: [' #cccccc', ' #ffffff', ' #cecece', ' #000000', ' #020202', ' #494949', ' #303030FF', ' #CCCCCC', '#c9c9c9'],
+  sunset: [' #202b26', ' #3c4d45', ' #597065', ' #ffffff', ' #020202', ' #a4b68d', ' #96B492FF', ' #96B492FF', ' rgb(102, 129, 116)'],
+  sunrise: [' #F08080', ' #F4978E', ' #be766f', '#2C2C2CFF', ' #020202', 'rgb(63, 50, 50)', ' #3F3F3FFF', ' #F8AD9D', 'rgb(190, 119, 112)'],
+};
+
+const themesThg = {
+  moon: [' #E34F26', '#1572B6', '#F7DF1E', '#7952B3','#4A90E2', '#4A90E2', '#2a2e35'],
+  sun: ['#303030FF', '#303030FF', '#303030FF', '#303030FF', '#303030FF', '#303030FF', '#C4C4C4FF'],
+  sunset: ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#2a2e35'],
+  sunrise: [' #271313FF', ' #271313FF', ' #271313FF', ' #271313FF', ' #271313FF', ' #271313FF', '#af6f69'],
 };
 
 const ColorCircles = ({ theme }) => {
@@ -56,6 +63,7 @@ const Navbar = () => {
   const changeTheme = (theme) => {
     setSelectedTheme(theme);
     updateThemeStyles(theme);
+    updateThemeStyless(theme);
     setIsThemeOpen(false);
   };
 
@@ -92,6 +100,27 @@ const Navbar = () => {
     }
   };
 
+  const updateThemeStyless = (theme) => {
+    const colors = themesThg[theme];
+    if (colors) {
+        document.documentElement.style.setProperty('--html', colors[0]);
+        document.documentElement.style.setProperty('--css', colors[1]);
+        document.documentElement.style.setProperty('--js', colors[2]);
+        document.documentElement.style.setProperty('--bts', colors[3]);
+        document.documentElement.style.setProperty('--cloud', colors[4]);
+        document.documentElement.style.setProperty('--react', colors[5]);
+        document.documentElement.style.setProperty('--icon', colors[6]);
+
+        // Aplicar brillo según el tema
+        if (theme === 'sun' || theme === 'sunrise') {
+            document.documentElement.style.setProperty('--theme-input-filter', 'brightness(0.1)');
+        } else {
+            document.documentElement.style.setProperty('--theme-input-filter', 'none');
+        }
+    }
+};
+
+  
   return (
     <div className={`navbar ${isMenuOpen || isLanguageOpen || isThemeOpen ? 'menu-open' : ''}`}>
       <div
@@ -108,10 +137,10 @@ const Navbar = () => {
             <a href="#projects">
               <button onClick={closeMenus}>Projects</button>
             </a>
-            <a href="#habilidades">
+            <a href="#skills">
               <button onClick={closeMenus}>Skills</button>
             </a>
-            <a href="#contacto">
+            <a href="#contact">
               <button onClick={closeMenus}>Contact</button>
             </a>
           </div>
