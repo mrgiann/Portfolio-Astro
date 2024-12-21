@@ -1,8 +1,6 @@
 ---
 import Navbar from "../components/navbar.jsx";
-import "../assets/main.css";
-
-import "aos/dist/aos.css";
+import "../assets/main.css"
 ---
 
 <!doctype html>
@@ -24,7 +22,7 @@ import "aos/dist/aos.css";
   </head>
   <body>
     <Navbar client:load />
-
+    <div class="line"></div>
     <div class="inicio">
       <div class="containerTitle">
         <div class="titleText">
@@ -53,15 +51,15 @@ import "aos/dist/aos.css";
         <video autoplay muted></video>
       </div>
       <div class="scroll-down">
-        <a href="#aboutSection"><i class="fas fa-chevron-down"></i></a>
+        <a href="#about"><i class="fas fa-chevron-down"></i></a>
       </div>
     </div>
     <div class="inicio2">
       <div id="about">
         <div class="containerAbout" id="aboutSection">
           <div class="aboutText">
-            <h1 id="about-me" data-aos="fade-up" data-aos-delay="100">About me</h1>
-            <h5 id="about-me-text" data-aos="fade-up" data-aos-delay="100">
+            <h1 id="about-me">About me</h1>
+            <h5 id="about-me-text">
               I am passionate about technology, creativity and problem solving.
               I excel in web development, interface design and creation of
               interactive applications, always looking for innovative and
@@ -69,15 +67,15 @@ import "aos/dist/aos.css";
             </h5>
           </div>
           <div class="studies">
-            <h1 id="studies" data-aos="fade-up" data-aos-delay="100">Studies</h1>
-            <h5 id="studies-text" data-aos="fade-up" data-aos-delay="100">
+            <h1 id="studies">Studies</h1>
+            <h5 id="studies-text">
               I am currently studying at the Instituto Parroquial Industrial
               Cristo Obrero.
             </h5>
           </div>
         </div>
         <div class="certifications">
-          <img data-aos="flip-down" src="webdesing.webp" class="image" />
+          <img src="webdesing.webp" class="image" />
         </div>
         <div id="imageModal" class="modal">
           <span class="close"><i class="fas fa-chevron-down"></i></span>
@@ -88,9 +86,9 @@ import "aos/dist/aos.css";
     </div>
     <div class="inicio3">
       <div id="projects">
-        <h1 id="my-projects" data-aos="fade-up" data-aos-delay="100">My Projects</h1>
+        <h1 id="my-projects">My Projects</h1>
         <div class="containerProyectos">
-          <div data-aos="fade-up" data-aos-delay="100"  class="cardProject">
+          <div  class="cardProject">
             <div class="containerImage">
               <img src="tarjetas.webp" alt="Card Generator" />
               <div class="buttons">
@@ -122,7 +120,7 @@ import "aos/dist/aos.css";
               </div>
             </div>
           </div>
-          <div data-aos="fade-up" data-aos-delay="100"  class="cardProject">
+          <div  class="cardProject">
             <div class="containerImage">
               <img src="clima.webp" alt="Weather App" />
               <div class="buttons">
@@ -154,7 +152,7 @@ import "aos/dist/aos.css";
               </div>
             </div>
           </div>
-          <div data-aos="fade-up" data-aos-delay="100"  class="cardProject">
+          <div  class="cardProject">
             <div class="containerImage">
               <img src="rglibrary.webp" alt="RgLibrary" />
               <div class="buttons">
@@ -185,7 +183,7 @@ import "aos/dist/aos.css";
               </div>
             </div>
           </div>
-          <div data-aos="fade-up" data-aos-delay="100"  class="cardProject">
+          <div  class="cardProject">
             <div class="containerImage">
               <img src="instagramlogin.webp" alt="Instagram Login" />
               <div class="buttons">
@@ -219,64 +217,64 @@ import "aos/dist/aos.css";
     </div>
     <div class="inicio4">
       <div id="skills">
-        <h1 id="skills-title" data-aos="fade-up" data-aos-delay="100" >Skills</h1>
+        <h1 id="skills-title" >Skills</h1>
         <div class="grid-container">
           <div class="containerfrontend">
             <div class="containerhr">
-              <h2 data-aos="fade-up" data-aos-delay="100">Frontend</h2><hr data-aos="fade-up" data-aos-delay="100"/>
+              <h2>Frontend</h2><hr/>
             </div>
             <div class="frontend">
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/html5.svg" alt="HTML5" />
+                <img src="/SVG/html5.svg" alt="HTML5" />
                 <p>HTML5</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/css.svg" alt="CSS" />
+                <img src="/SVG/css.svg" alt="CSS" />
                 <p>CSS</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/bootstrap.svg" alt="Bootstrap" />
+                <img src="/SVG/bootstrap.svg" alt="Bootstrap" />
                 <p>Bootstrap</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/tailwind.svg" alt="Tailwind" />
+                <img src="/SVG/tailwind.svg" alt="Tailwind" />
                 <p>Tailwind</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/javascript.svg" alt="JavaScript" />
+                <img src="/SVG/javascript.svg" alt="JavaScript" />
                 <p>JavaScript</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/react.svg" alt="React" />
+                <img src="/SVG/react.svg" alt="React" />
                 <p>React</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/vite.svg" alt="React" />
+                <img src="/SVG/vite.svg" alt="React" />
                 <p>Vite</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/angular.svg" alt="Angular" />
+                <img src="/SVG/angular.svg" alt="Angular" />
                 <p>Angular</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/astro.svg" alt="Astro" />
+                <img src="/SVG/astro.svg" alt="Astro" />
                 <p>Astro</p>
               </div>
               </div>
@@ -284,24 +282,24 @@ import "aos/dist/aos.css";
           </div>
           <div class="containerbackend">
             <div class="containerhr">
-              <h2 data-aos="fade-up" data-aos-delay="100">Backend</h2><hr data-aos="fade-up" data-aos-delay="100"/>
+              <h2>Backend</h2><hr/>
             </div>
             <div class="backend">
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/nodejs.svg" alt="Node.js" />
+                <img src="/SVG/nodejs.svg" alt="Node.js" />
                 <p>Node.js</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/express.svg" alt="Node.js" />
+                <img src="/SVG/express.svg" alt="Node.js" />
                 <p>Express.js</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/mongodb.svg" alt="MongoDB" />
+                <img src="/SVG/mongodb.svg" alt="MongoDB" />
                 <p>MongoDB</p>
               </div>
               </div>
@@ -309,36 +307,36 @@ import "aos/dist/aos.css";
           </div>
           <div class="containerothers">
             <div class="containerhr">
-              <h2 id="other" data-aos="fade-up" data-aos-delay="100">Other</h2><hr data-aos="fade-up" data-aos-delay="100"/>
+              <h2 id="other">Other</h2><hr/>
             </div>
             <div class="others">
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/git.svg" alt="Git" />
+                <img src="/SVG/git.svg" alt="Git" />
                 <p>Git</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/github.svg" alt="GitHub" />
+                <img src="/SVG/github.svg" alt="GitHub" />
                 <p>GitHub</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/openai.svg" alt="OpenAI" />
+                <img src="/SVG/openai.svg" alt="OpenAI" />
                 <p>ChatGPT</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/visualstudio.svg" alt="Visual Studio" />
+                <img src="/SVG/visualstudio.svg" alt="Visual Studio" />
                 <p>Visual Studio</p>
               </div>
               </div>
-              <div data-aos="fade-up" data-aos-delay="200">
+              <div>
               <div class="icon">
-                <img src="/public/SVG/sublimetext.svg" alt="Sublime Text" />
+                <img src="/SVG/sublimetext.svg" alt="Sublime Text" />
                 <p>Sublime Text</p>
               </div>
               </div>
@@ -391,11 +389,6 @@ import "aos/dist/aos.css";
         </div>
       </div>
     </footer>
-
-    <script>
-      import AOS from "aos";
-      AOS.init();
-    </script>
   </body>
 </html>
 <script src="../components/scripts.js"></script>

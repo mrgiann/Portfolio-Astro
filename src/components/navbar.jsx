@@ -127,7 +127,7 @@ const Navbar = () => {
         className={`menu-overlay ${isMenuOpen || isLanguageOpen || isThemeOpen ? 'open' : ''}`}
         onClick={closeMenus}
       ></div>
-
+      <div className="line"></div>
       <nav className="navbar">
         <div className="container">
           <div className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>

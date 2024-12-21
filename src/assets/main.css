@@ -75,6 +75,36 @@ a {
     margin-top: 200px;
 }
 
+.line {
+    position: fixed;
+    background: var(--color-texto);
+    z-index: 1000;
+    width: 0%;
+    top: 76px;
+    height: 3px;
+    pointer-events: none;
+    opacity: 0.1;
+    animation: linea-navbar auto linear;
+    animation-timeline: scroll(root block);
+  }
+  
+  @keyframes linea-navbar{
+    from {width: 0%;}
+    to {width: 100%;}
+  }
+
+  .linea{
+    position: absolute;
+
+    margin-top: 20px;
+    left: 50%;
+    width: 2px;
+    height: 180px;
+    background-color: var(--color-texto);
+    transform: translateX(-50%);
+    z-index: -1; 
+  }
+
 .containerImg {
     flex: 0 0 auto;
     text-align: center;
@@ -148,7 +178,7 @@ a {
 
 .social-links-title a:hover {
     color: var(--color-texto);
-    text-shadow: 0px 4px 8px var(--color-texto); 
+    text-shadow: 0px 2px 10px var(--color-texto); 
     text-decoration: none;
 }
 
@@ -401,6 +431,8 @@ a {
 
     .certifications img {
         max-width: 500px;
+        
+
     }
 
     .containerTitle {
@@ -449,7 +481,26 @@ a {
     justify-content: center;
     padding-left: 5%;
     padding-right: 5%;
+
+
+/* 
+    animation: reveal 0.8s ease both;
+    animation-timeline: view();
+    animation-range: entry 50%5cover 60%6  */
+
 }
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        translate: 0 100px;
+    }
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
 
 @media screen and (max-width: 880px) {
     [id] {
@@ -470,16 +521,15 @@ a {
     background-color: var(--color-fondo-titulos);
 }
 
-.containerAbout .studies h1 {
+.containerAbout .aboutText h1, .containerAbout .studies h1 {
     background-color: var(--color-fondo-titulos);
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
-}
 
-.containerAbout .aboutText h1 {
-    background-color: var(--color-fondo-titulos);
-    border-top-right-radius: 30px;
-    border-top-left-radius: 30px;
+    animation: reveal 0.8s ease both;
+    animation-timeline: view();
+    animation-range: entry 50% cover 60%; 
+
 }
 
 .containerAbout {
@@ -499,7 +549,7 @@ a {
 .aboutText {
     flex: 1;
     max-width: 50%;
-    border-right: 1px solid var(--color-texto);
+    border-right: 2px solid var(--color-texto);
     padding-right: 30px;
 }
 
@@ -511,6 +561,9 @@ a {
 
 .certifications img {
     max-width: 300px;
+    animation: reveal 0.8s ease both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%; 
 }
 
 .aboutText h1,
@@ -524,6 +577,10 @@ a {
     font-size: 1.2rem;
     color: var(--color-text-secundario);
     margin-top: 1rem;
+
+    animation: reveal 0.8s ease both;
+    animation-timeline: view();
+    animation-range: entry 50% cover 60%; 
 }
 
 .modal {
@@ -576,6 +633,10 @@ a {
 .inicio3 h1 {
     color: var(--color-texto);
     padding: 20px;
+    
+    animation: reveal 0.8s ease both;
+    animation-timeline: view();
+    animation-range: entry 450% cover 100%; 
 }
 
 .containerProyectos {
@@ -598,6 +659,10 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    animation: reveal 0.8s ease both;
+    animation-timeline: view();
+    animation-range: entry 50% cover 60%; 
 }
 
 .cardProject img {
@@ -758,6 +823,9 @@ a {
 
 .grid-container h2 {
     margin-bottom: 10px;
+    animation: reveal 0.8s ease both;
+    animation-timeline: view();
+    animation-range: entry 50% cover 60%; 
 }
 
 .containerfrontend,
@@ -806,6 +874,10 @@ a {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
     width: 120px;
+
+    animation: reveal 0.8s ease both;
+    animation-timeline: view();
+    animation-range: entry 50% cover 60%; 
 }
 
 .icon:hover {
@@ -838,10 +910,21 @@ a {
     border: 1px solid var(--color-texto);
     margin: 1rem 0;
     width: 500px;
+
+
+    animation: reveal 0.8s ease both;
+    animation-timeline: view();
+    animation-range: entry 50% cover 60%; 
 }
 
 #skills {
     padding-top: 30px;
+}
+
+#skills-title{
+    animation: reveal 0.8s ease both;
+    animation-timeline: view();
+    animation-range: entry 100% cover 80%; 
 }
 
 
