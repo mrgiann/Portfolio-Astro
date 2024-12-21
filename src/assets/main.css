@@ -572,15 +572,23 @@ a {
     margin: 0;
 }
 
-.aboutText h5,
-.studies h5 {
+.aboutText h5 {
     font-size: 1.2rem;
     color: var(--color-text-secundario);
     margin-top: 1rem;
 
     animation: reveal 0.8s ease both;
     animation-timeline: view();
-    animation-range: entry 50% cover 60%; 
+    animation-range: entry 30% cover 62%;  
+}
+.studies h5{
+    font-size: 1.2rem;
+    color: var(--color-text-secundario);
+    margin-top: 1rem;
+
+    animation: reveal 0.8s ease both;
+    animation-timeline: view();
+    animation-range: entry 30% cover 70%; 
 }
 
 .modal {
@@ -636,7 +644,7 @@ a {
     
     animation: reveal 0.8s ease both;
     animation-timeline: view();
-    animation-range: entry 450% cover 100%; 
+    animation-range: entry 200% cover 100%; 
 }
 
 .containerProyectos {
@@ -662,7 +670,7 @@ a {
 
     animation: reveal 0.8s ease both;
     animation-timeline: view();
-    animation-range: entry 50% cover 60%; 
+    animation-range: entry 10% cover 90%; 
 }
 
 .cardProject img {
