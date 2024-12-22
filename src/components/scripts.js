@@ -94,4 +94,39 @@ window.onload = function () {
 
 
 
+const cursorDot = document.querySelector("[data-cursor-dot]");
+const cursorOutline = document.querySelector("[data-cursor-outline]");
 
+window.addEventListener("mousemove", function (e) {
+  const posX = e.clientX;
+  const posY = e.clientY;
+
+  cursorDot.style.left = `${posX}px`;
+  cursorDot.style.top = `${posY}px`;
+
+  cursorOutline.animate(
+    {
+      left: `${posX}px`,
+      top: `${posY}px`,
+    },
+    { duration: 200, fill: "forwards" }
+  );
+});
+
+
+const inputs = document.querySelectorAll('.theme-input, .language-input, a, .theme-option, label, #copy-btn, img.image, .fa-chevron-down');  // Selecciona ambos elementos
+
+inputs.forEach(input => {
+  input.addEventListener('mouseenter', () => {
+    cursorDot.style.width = '12px';
+    cursorDot.style.height = '12px';
+    cursorDot.style.backgroundColor = 'var(--color-texto)'; // Cambiar color si se desea
+    cursorDot.style.opacity = '0.8'; // Establecer opacidad (ajustar el valor según lo desees)
+  });
+
+  input.addEventListener('mouseleave', () => {
+    cursorDot.style.width = '25px';
+    cursorDot.style.height = '25px';
+    cursorDot.style.backgroundColor = 'var(--color-texto)'; // Restaurar color original
+  });
+});

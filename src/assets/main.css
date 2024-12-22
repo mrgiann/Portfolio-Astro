@@ -19,7 +19,46 @@ body {
     background-color: var(--color-fondo);
     color: var(--color-texto);
     font-family: monospace;
+    cursor: none;
 }
+
+* {
+    cursor: none !important;
+    /* Oculta el cursor predeterminado */
+}
+
+
+.cursor-outline {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--color-texto);
+    box-shadow: 0 0 0 2px black; /* Borde externo */
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    z-index: 9999999;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s ease;
+}
+
+.cursor-dot {
+    width: 25px;
+    height: 25px;
+    background-color: var(--color-texto);
+    border: 1px solid var(--color-fondo);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+    z-index: 9999999;
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+    position: fixed;
+    transition: width 0.3s, height 0.3s;
+}
+
 
 [id] {
     scroll-margin-top: 5.8em;
@@ -68,10 +107,11 @@ a {
     box-sizing: border-box;
 }
 
-.inicio3{
+.inicio3 {
     margin-top: 200px;
 }
-.inicio4{
+
+.inicio4 {
     margin-top: 200px;
 }
 
@@ -86,14 +126,19 @@ a {
     opacity: 0.1;
     animation: linea-navbar auto linear;
     animation-timeline: scroll(root block);
-  }
-  
-  @keyframes linea-navbar{
-    from {width: 0%;}
-    to {width: 100%;}
-  }
+}
 
-  .linea{
+@keyframes linea-navbar {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.linea {
     position: absolute;
 
     margin-top: 20px;
@@ -102,8 +147,8 @@ a {
     height: 180px;
     background-color: var(--color-texto);
     transform: translateX(-50%);
-    z-index: -1; 
-  }
+    z-index: -1;
+}
 
 .containerImg {
     flex: 0 0 auto;
@@ -151,34 +196,34 @@ a {
     flex-direction: column;
 }
 
-.social-links-title{
+.social-links-title {
     margin-top: 25px;
     display: flex;
     gap: 25px;
 }
 
-.social-links-title a{
+.social-links-title a {
     margin-left: 0px;
 }
 
 .social-links-title {
     display: inline-flex;
     align-items: center;
-    color: var(--color-texto); 
+    color: var(--color-texto);
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-links-title i {
-    font-size: 20px; 
+    font-size: 20px;
     transition: transform 0.3s ease;
     text-decoration: none;
 }
 
 .social-links-title a:hover {
     color: var(--color-texto);
-    text-shadow: 0px 2px 10px var(--color-texto); 
+    text-shadow: 0px 2px 10px var(--color-texto);
     text-decoration: none;
 }
 
@@ -431,7 +476,7 @@ a {
 
     .certifications img {
         max-width: 500px;
-        
+
 
     }
 
@@ -451,7 +496,6 @@ a {
     left: 50%;
     transform: translateX(-50%);
     font-size: 30px;
-    cursor: pointer;
 }
 
 .scroll-down a {
@@ -483,7 +527,7 @@ a {
     padding-right: 5%;
 
 
-/* 
+    /* 
     animation: reveal 0.8s ease both;
     animation-timeline: view();
     animation-range: entry 50%5cover 60%6  */
@@ -495,6 +539,7 @@ a {
         opacity: 0;
         translate: 0 100px;
     }
+
     to {
         opacity: 1;
         translate: 0 0;
@@ -521,14 +566,15 @@ a {
     background-color: var(--color-fondo-titulos);
 }
 
-.containerAbout .aboutText h1, .containerAbout .studies h1 {
+.containerAbout .aboutText h1,
+.containerAbout .studies h1 {
     background-color: var(--color-fondo-titulos);
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
 
     animation: reveal 0.8s ease both;
     animation-timeline: view();
-    animation-range: entry 50% cover 60%; 
+    animation-range: entry 50% cover 60%;
 
 }
 
@@ -563,7 +609,7 @@ a {
     max-width: 300px;
     animation: reveal 0.8s ease both;
     animation-timeline: view();
-    animation-range: entry 10% cover 30%; 
+    animation-range: entry 10% cover 30%;
 }
 
 .aboutText h1,
@@ -579,16 +625,17 @@ a {
 
     animation: reveal 0.8s ease both;
     animation-timeline: view();
-    animation-range: entry 30% cover 62%;  
+    animation-range: entry 30% cover 62%;
 }
-.studies h5{
+
+.studies h5 {
     font-size: 1.2rem;
     color: var(--color-text-secundario);
     margin-top: 1rem;
 
     animation: reveal 0.8s ease both;
     animation-timeline: view();
-    animation-range: entry 30% cover 70%; 
+    animation-range: entry 30% cover 70%;
 }
 
 .modal {
@@ -624,7 +671,6 @@ a {
     position: absolute;
     top: 50%;
     right: 15%;
-    cursor: pointer;
 }
 
 .close:hover,
@@ -641,10 +687,10 @@ a {
 .inicio3 h1 {
     color: var(--color-texto);
     padding: 20px;
-    
+
     animation: reveal 0.8s ease both;
     animation-timeline: view();
-    animation-range: entry 200% cover 100%; 
+    animation-range: entry 200% cover 100%;
 }
 
 .containerProyectos {
@@ -670,7 +716,7 @@ a {
 
     animation: reveal 0.8s ease both;
     animation-timeline: view();
-    animation-range: entry 10% cover 90%; 
+    animation-range: entry 10% cover 80%;
 }
 
 .cardProject img {
@@ -833,7 +879,7 @@ a {
     margin-bottom: 10px;
     animation: reveal 0.8s ease both;
     animation-timeline: view();
-    animation-range: entry 50% cover 60%; 
+    animation-range: entry 50% cover 60%;
 }
 
 .containerfrontend,
@@ -885,7 +931,7 @@ a {
 
     animation: reveal 0.8s ease both;
     animation-timeline: view();
-    animation-range: entry 50% cover 60%; 
+    animation-range: entry 50% cover 60%;
 }
 
 .icon:hover {
@@ -922,17 +968,17 @@ a {
 
     animation: reveal 0.8s ease both;
     animation-timeline: view();
-    animation-range: entry 50% cover 60%; 
+    animation-range: entry 50% cover 60%;
 }
 
 #skills {
     padding-top: 30px;
 }
 
-#skills-title{
+#skills-title {
     animation: reveal 0.8s ease both;
     animation-timeline: view();
-    animation-range: entry 100% cover 80%; 
+    animation-range: entry 100% cover 80%;
 }
 
 
@@ -1006,7 +1052,6 @@ footer {
     border: none;
     border-radius: 5px;
     color: var(--color-texto);
-    cursor: pointer;
     transition: background-color 0.3s;
 }
 
@@ -1037,11 +1082,11 @@ footer {
 
 @media (max-width: 400px) {
 
-    .social-links a span{
+    .social-links a span {
         display: none;
     }
 
-    .social-links i{
+    .social-links i {
         font-size: 25px;
     }
 
@@ -1056,7 +1101,8 @@ footer {
 
 #copy-message {
     position: absolute;
-    top: -30px; /* Coloca el mensaje justo arriba del botón */
+    top: -30px;
+    /* Coloca el mensaje justo arriba del botón */
     left: 0;
     padding: 5px;
     background-color: #4CAF50;
@@ -1064,5 +1110,4 @@ footer {
     border-radius: 3px;
     font-size: 14px;
     white-space: nowrap;
-  }
-  
+}

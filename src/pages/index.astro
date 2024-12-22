@@ -22,6 +22,8 @@ import "../assets/main.css"
   </head>
   <body>
     <Navbar client:load />
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
     <div class="line"></div>
     <div class="inicio">
       <div class="containerTitle">
@@ -217,134 +219,138 @@ import "../assets/main.css"
     </div>
     <div class="inicio4">
       <div id="skills">
-        <h1 id="skills-title" >Skills</h1>
+        <h1 id="skills-title">Skills</h1>
         <div class="grid-container">
           <div class="containerfrontend">
             <div class="containerhr">
-              <h2>Frontend</h2><hr/>
+              <h2>Frontend</h2>
+              <hr/>
             </div>
             <div class="frontend">
-              <div>
-              <div class="icon">
-                <img src="/SVG/html5.svg" alt="HTML5" />
-                <p>HTML5</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/css.svg" alt="CSS" />
-                <p>CSS</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/bootstrap.svg" alt="Bootstrap" />
-                <p>Bootstrap</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/tailwind.svg" alt="Tailwind" />
-                <p>Tailwind</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/javascript.svg" alt="JavaScript" />
-                <p>JavaScript</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/react.svg" alt="React" />
-                <p>React</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/vite.svg" alt="React" />
-                <p>Vite</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/angular.svg" alt="Angular" />
-                <p>Angular</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/astro.svg" alt="Astro" />
-                <p>Astro</p>
-              </div>
-              </div>
+              <a href="https://html.spec.whatwg.org/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/html5.svg" alt="HTML5" />
+                  <p>HTML5</p>
+                </div>
+              </a>
+              <a href="https://www.w3.org/Style/CSS/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/css.svg" alt="CSS" />
+                  <p>CSS</p>
+                </div>
+              </a>
+              <a href="https://getbootstrap.com/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/bootstrap.svg" alt="Bootstrap" />
+                  <p>Bootstrap</p>
+                </div>
+              </a>
+              <a href="https://tailwindcss.com/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/tailwind.svg" alt="Tailwind" />
+                  <p>Tailwind</p>
+                </div>
+              </a>
+              <a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/javascript.svg" alt="JavaScript" />
+                  <p>JavaScript</p>
+                </div>
+              </a>
+              <a href="https://reactjs.org/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/react.svg" alt="React" />
+                  <p>React</p>
+                </div>
+              </a>
+              <a href="https://vitejs.dev/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/vite.svg" alt="Vite" />
+                  <p>Vite</p>
+                </div>
+              </a>
+              <a href="https://angular.io/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/angular.svg" alt="Angular" />
+                  <p>Angular</p>
+                </div>
+              </a>
+              <a href="https://astro.build/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/astro.svg" alt="Astro" />
+                  <p>Astro</p>
+                </div>
+              </a>
             </div>
           </div>
           <div class="containerbackend">
             <div class="containerhr">
-              <h2>Backend</h2><hr/>
+              <h2>Backend</h2>
+              <hr/>
             </div>
             <div class="backend">
-              <div>
-              <div class="icon">
-                <img src="/SVG/nodejs.svg" alt="Node.js" />
-                <p>Node.js</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/express.svg" alt="Node.js" />
-                <p>Express.js</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/mongodb.svg" alt="MongoDB" />
-                <p>MongoDB</p>
-              </div>
-              </div>
+              <a href="https://nodejs.org/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/nodejs.svg" alt="Node.js" />
+                  <p>Node.js</p>
+                </div>
+              </a>
+              <a href="https://expressjs.com/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/express.svg" alt="Express.js" />
+                  <p>Express.js</p>
+                </div>
+              </a>
+              <a href="https://www.mongodb.com/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/mongodb.svg" alt="MongoDB" />
+                  <p>MongoDB</p>
+                </div>
+              </a>
             </div>
           </div>
           <div class="containerothers">
             <div class="containerhr">
-              <h2 id="other">Other</h2><hr/>
+              <h2 id="other">Other</h2>
+              <hr/>
             </div>
             <div class="others">
-              <div>
-              <div class="icon">
-                <img src="/SVG/git.svg" alt="Git" />
-                <p>Git</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/github.svg" alt="GitHub" />
-                <p>GitHub</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/openai.svg" alt="OpenAI" />
-                <p>ChatGPT</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/visualstudio.svg" alt="Visual Studio" />
-                <p>Visual Studio</p>
-              </div>
-              </div>
-              <div>
-              <div class="icon">
-                <img src="/SVG/sublimetext.svg" alt="Sublime Text" />
-                <p>Sublime Text</p>
-              </div>
-              </div>
+              <a href="https://git-scm.com/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/git.svg" alt="Git" />
+                  <p>Git</p>
+                </div>
+              </a>
+              <a href="https://github.com/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/github.svg" alt="GitHub" />
+                  <p>GitHub</p>
+                </div>
+              </a>
+              <a href="https://chat.openai.com/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/openai.svg" alt="ChatGPT" />
+                  <p>ChatGPT</p>
+                </div>
+              </a>
+              <a href="https://visualstudio.microsoft.com/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/visualstudio.svg" alt="Visual Studio" />
+                  <p>Visual Studio</p>
+                </div>
+              </a>
+              <a href="https://www.sublimetext.com/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/sublimetext.svg" alt="Sublime Text" />
+                  <p>Sublime Text</p>
+                </div>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
 
     <footer>
       <div id="contact">
