@@ -1,8 +1,8 @@
 ---
-import Navbar from "../components/navbar.jsx";
-import "../assets/main.css"
+import Navbar from "./navbar.jsx";
+import "../../assets/main.css"
 
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -56,7 +56,7 @@ const t = useTranslations(lang);
         </div>
       </div>
       <div class="containerImg">
-        <img src="logo.webp" />
+        <img src="../logo.webp" />
         <video autoplay muted></video>
       </div>
       <div class="scroll-down">
@@ -80,7 +80,7 @@ const t = useTranslations(lang);
           </div>
         </div>
         <div class="certifications">
-          <img src="webdesing.webp" class="image" />
+          <img src="../webdesing.webp" class="image" />
         </div>
         <div id="imageModal" class="modal">
           <span class="close"><i class="fas fa-chevron-down"></i></span>
@@ -95,7 +95,7 @@ const t = useTranslations(lang);
         <div class="containerProyectos">
           <div  class="cardProject">
             <div class="containerImage">
-              <img draggable="false" src="tarjetas.webp" alt="Card Generator" />
+              <img draggable="false" src="../tarjetas.webp" alt="Card Generator" />
               <div class="buttons">
                 <a
                   draggable="false" href="https://card-generator-renzo.netlify.app/"
@@ -127,7 +127,7 @@ const t = useTranslations(lang);
           </div>
           <div  class="cardProject">
             <div class="containerImage">
-              <img draggable="false" src="clima.webp" alt="Weather App" />
+              <img draggable="false" src="../clima.webp" alt="Weather App" />
               <div class="buttons">
                 <a
                   draggable="false" href="https://mrgiann.github.io/Weather-app/"
@@ -159,7 +159,7 @@ const t = useTranslations(lang);
           </div>
           <div  class="cardProject">
             <div class="containerImage">
-              <img draggable="false" src="rglibrary.webp" alt="RgLibrary" />
+              <img draggable="false" src="../rglibrary.webp" alt="RgLibrary" />
               <div class="buttons">
                 <a
                   draggable="false" href="https://rglibrary.netlify.app/"
@@ -190,7 +190,7 @@ const t = useTranslations(lang);
           </div>
           <div  class="cardProject">
             <div class="containerImage">
-              <img draggable="false" src="instagramlogin.webp" alt="Instagram Login" />
+              <img draggable="false" src="../instagramlogin.webp" alt="Instagram Login" />
               <div class="buttons">
                 <a
                   draggable="false" href="https://test-ig-login.netlify.app/"
@@ -399,4 +399,4 @@ const t = useTranslations(lang);
     </footer>
   </body>
 </html>
-<script src="../components/scripts.js"></script>
+<script src="../../components/scripts.js"></script>

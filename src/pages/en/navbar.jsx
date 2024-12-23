@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import '../assets/navbar.css';
-import { languages } from '../i18n/ui';
-import { useTranslations } from '../i18n/utils';
+import '../../assets/navbar.css';
+import { languages } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
 
 const lang = 'en';
 const t = useTranslations(lang);
@@ -50,7 +50,6 @@ const Navbar = () => {
       updateThemeStyless(savedTheme);
     }
   }, []);
-  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -101,12 +100,12 @@ const Navbar = () => {
       window.location.href = '/pt/';
     }
   };
-  
+
   const themeImages = {
-    moon: 'logo.webp',
-    sun: 'logoclaro.webp',
-    sunset: 'logoatardecer.webp',
-    sunrise: 'logoamanecer.webp',
+    moon: '../logo.webp',
+    sun: '../logoclaro.webp',
+    sunset: '../logoatardecer.webp',
+    sunrise: '../logoamanecer.webp',
   };
 
   // Función para actualizar las variables de CSS según el tema seleccionado
@@ -221,8 +220,7 @@ const Navbar = () => {
                 />
               </div>
               <div className={`language-options ${isLanguageOpen ? 'open' : ''}`}>
-                <div id='language-navbar' className="language-title">Language</div
-                >
+                <div id='language-navbar' className="language-title">Language</div>
                 <label>
                   <input
                     id='englishh'

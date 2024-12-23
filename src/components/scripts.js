@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Verificar que la imagen sea la principal
     if (img.src.includes('logo.webp') && !video.classList.contains('visible')) {
       // Establecer el src del video de hover solo para la imagen principal
-      const hoverVideoSrc = "logohover.mp4";
+      const hoverVideoSrc = "../logohover.mp4";
 
       // Cambiar el src del video
       video.src = hoverVideoSrc;
@@ -130,3 +130,7 @@ inputs.forEach(input => {
     cursorDot.style.backgroundColor = 'var(--color-texto)'; // Restaurar color original
   });
 });
+
+
+
+

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import '../assets/navbar.css';
-import { languages } from '../i18n/ui';
-import { useTranslations } from '../i18n/utils';
+import '../../assets/navbar.css';
+import { languages } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
 
-const lang = 'en';
+const lang = 'fr';
 const t = useTranslations(lang);
 // {t('nombre-del-texto')}
 
@@ -40,7 +40,7 @@ const Navbar = () => {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState('moon');
-  const [selectedLanguage, setSelectedLanguage] = useState('english');
+  const [selectedLanguage, setSelectedLanguage] = useState('french');
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('selectedTheme');
@@ -50,7 +50,6 @@ const Navbar = () => {
       updateThemeStyless(savedTheme);
     }
   }, []);
-  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -101,12 +100,12 @@ const Navbar = () => {
       window.location.href = '/pt/';
     }
   };
-  
+
   const themeImages = {
-    moon: 'logo.webp',
-    sun: 'logoclaro.webp',
-    sunset: 'logoatardecer.webp',
-    sunrise: 'logoamanecer.webp',
+    moon: '../logo.webp',
+    sun: '../logoclaro.webp',
+    sunset: '../logoatardecer.webp',
+    sunrise: '../logoamanecer.webp',
   };
 
   // Función para actualizar las variables de CSS según el tema seleccionado
@@ -221,8 +220,7 @@ const Navbar = () => {
                 />
               </div>
               <div className={`language-options ${isLanguageOpen ? 'open' : ''}`}>
-                <div id='language-navbar' className="language-title">Language</div
-                >
+                <div id='language-navbar' className="language-title">Language</div>
                 <label>
                   <input
                     id='englishh'
