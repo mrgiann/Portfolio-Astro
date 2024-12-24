@@ -60,7 +60,7 @@ const t = useTranslations(lang);
         <video autoplay muted></video>
       </div>
       <div class="scroll-down">
-        <a href="#about"><i class="fas fa-chevron-down"></i></a>
+        <a href="#about" aria-label="Ir a la sección Acerca de"><i class="fas fa-chevron-down"></i></a>
       </div>
     </div>
     <div class="inicio2">
@@ -68,15 +68,15 @@ const t = useTranslations(lang);
         <div class="containerAbout" id="aboutSection">
           <div class="aboutText">
             <h1 id="about-me">{t('about-me')}</h1>
-            <h5 id="about-me-text">
+            <h2 id="about-me-text">
               {t('about-me-text')}
-            </h5>
+            </h2>
           </div>
           <div class="studies">
             <h1 id="studies">{t('studies')}</h1>
-            <h5 id="studies-text">
+            <h2 id="studies-text">
               {t('studies-text')}
-            </h5>
+            </h2>
           </div>
         </div>
         <div class="certifications">

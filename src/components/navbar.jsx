@@ -174,7 +174,7 @@ const Navbar = () => {
             </a>
           </div>
 
-          <button className="menu-toggle" onClick={toggleMenu}>
+          <button className="menu-toggle" aria-label="Abrir menú" onClick={toggleMenu}>
             <i className={`fas fa-bars ${isMenuOpen ? 'open' : ''}`}></i>
           </button>
 

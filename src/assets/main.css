@@ -635,7 +635,7 @@ a {
     margin: 0;
 }
 
-.aboutText h5 {
+.aboutText h2 {
     font-size: 1.2rem;
     color: var(--color-text-secundario);
     margin-top: 1rem;
@@ -645,7 +645,7 @@ a {
     animation-range: entry 30% cover 62%;
 }
 
-.studies h5 {
+.studies h2 {
     font-size: 1.2rem;
     color: var(--color-text-secundario);
     margin-top: 1rem;
