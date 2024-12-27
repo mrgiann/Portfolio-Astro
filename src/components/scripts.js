@@ -23,14 +23,15 @@ document.getElementById('copy-btn').addEventListener('click', function() {
 
 // Obtener el modal, la imagen y el botón de cierre
 var modal = document.getElementById("imageModal");
-var modalImg = document.getElementById("modalImage");
+var modalImg = document.querySelector(".modalImage");
 var closeBtn = document.getElementsByClassName("close")[0];
 
-// Funcionalidad para las imágenes de las certificaciones (si las tienes)
+// Funcionalidad para las imágenes de las certificaciones
 document.querySelector(".certifications img").onclick = function() {
   modal.style.display = "flex";
   modalImg.src = this.src;      
-}
+};
+
 // Botón de cierre
 closeBtn.onclick = function(event) {
   event.stopPropagation(); 
@@ -43,6 +44,7 @@ modal.onclick = function(event) {
     modal.style.display = "none";
   }
 };
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
