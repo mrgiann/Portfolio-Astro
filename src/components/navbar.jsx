@@ -144,8 +144,10 @@ const Navbar = () => {
         // Aplicar brillo según el tema
         if (theme === 'sun' || theme === 'sunrise') {
             document.documentElement.style.setProperty('--theme-input-filter', 'brightness(0.1)');
+            document.documentElement.style.setProperty('--language-input-filter', 'brightness(0.1)');
         } else {
             document.documentElement.style.setProperty('--theme-input-filter', 'none');
+            document.documentElement.style.setProperty('--language-input-filter', 'none');
         }
     }
 };
@@ -214,7 +216,7 @@ const Navbar = () => {
             <div className="language-select-container">
               <div className="idioma">
                 <img
-                  src="../idioma.webp"
+                  src="../language.svg"
                   alt="Idioma"
                   className="language-input"
                   onClick={toggleLanguage}
