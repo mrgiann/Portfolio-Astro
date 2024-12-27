@@ -958,6 +958,8 @@ a {
 .icon img {
     max-width: 70px;
     max-height: 70px;
+    width: 70px;
+    height: 70px;
     width: auto;
     height: auto;
     margin-bottom: 10px;
