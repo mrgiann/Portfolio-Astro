@@ -493,8 +493,6 @@ a {
 
     .certifications img {
         max-width: 500px;
-
-
     }
 
     .containerTitle {
@@ -624,6 +622,8 @@ a {
 
 .certifications img {
     max-width: 300px;
+    width: 300px;
+    height: 201px;
     animation: reveal 0.8s ease both;
     animation-timeline: view();
     animation-range: entry 10% cover 30%;
@@ -791,11 +791,6 @@ a {
     display: flex;
     justify-content: center;
     gap: 15px;
-}
-
-.tech-icons i {
-    font-size: 1.9rem;
-    color: #4A90D9;
 }
 
 .buttons {
@@ -967,6 +962,8 @@ a {
 .icon img {
     max-width: 70px;
     max-height: 70px;
+    width: 70px;
+    height: 70px;
     width: auto;
     height: auto;
     margin-bottom: 10px;
@@ -1136,4 +1133,13 @@ footer {
     border-radius: 3px;
     font-size: 14px;
     white-space: nowrap;
+}
+
+
+
+.tech-icons .icon-project-tec{
+    width: 33px;
+    height: 31px;
+    margin-bottom: 0;
+    padding: 0;
 }
