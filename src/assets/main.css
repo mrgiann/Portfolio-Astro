@@ -1149,7 +1149,7 @@ footer {
     transition: filter 0.3s ease;
 }
 
-#github, img#linkedin{
+.social-links-title #github, .social-links-title img#linkedin{
     filter: var(--theme-input-filter, none);
     transition: filter 0.3s ease;
     width: 19.30px;
@@ -1158,7 +1158,7 @@ footer {
     top: 4px;
 }
 
-.social-links #github, #linkedin, #instagram{
+.social-links #github, .social-links img#linkedin, .social-links #instagram{
     filter: var(--theme-input-filter, none);
     transition: filter 0.3s ease;
     width: 16.30px;
@@ -1169,4 +1169,17 @@ footer {
 
 .social-links{
     margin-bottom: 10px;
+}
+
+#hamburgerr{
+    width: 43px;
+    position: relative;
+    top: 4px;
+    right: 5px;
+    filter: var(--theme-input-filter, none);
+    transition: filter 0.3s ease;
+}
+
+.navbar-actions{
+    margin-right: 28px;
 }
