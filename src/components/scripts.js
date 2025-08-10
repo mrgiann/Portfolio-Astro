@@ -46,38 +46,6 @@ modal.onclick = function(event) {
 };
 
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  const container = document.querySelector('.containerImg'); 
-  const img = container.querySelector('img');
-  const video = container.querySelector('video');
-
-  container.addEventListener('mouseenter', () => {
-    // Verificar que la imagen sea la principal
-    if (img.src.includes('logo.webp') && !video.classList.contains('visible')) {
-      // Establecer el src del video de hover solo para la imagen principal
-      const hoverVideoSrc = "../logohover.mp4";
-
-      // Cambiar el src del video
-      video.src = hoverVideoSrc;
-      video.load(); // Recargar el video
-
-      // Cambiar visibilidad
-      img.classList.add('hidden');
-      video.classList.add('visible');
-      video.play();
-    }
-  });
-
-  video.addEventListener('ended', () => {
-    // Cuando termine el video, regresa a la imagen
-    video.classList.remove('visible');
-    img.classList.remove('hidden');
-    video.src = ""; // Limpia la referencia del video
-  });
-});
-
-
 function addface() {
   const typingText = document.getElementById("typing-text");
   setTimeout(() => {

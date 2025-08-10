@@ -227,6 +227,64 @@ const t = useTranslations(lang);
               </div>
             </div>
           </div>
+          <div  class="cardProject">
+            <div class="containerImage">
+              <img draggable="false" src="iico.webp" alt="Cristo Obrero" />
+              <div class="buttons">
+                <a
+                  draggable="false" href="https://cristo-obrero-astro.netlify.app/"
+                  target="_blank"
+                  class="view-project"
+                  ><i class="fas fa-external-link-alt"></i id="visit"> {t('visit')}</a
+                >
+                <a
+                  draggable="false" href="https://github.com/mrgiann/Cristo-Obrero-Astro"
+                  target="_blank"
+                  class="github-link"><i class="fab fa-github"></i> GitHub</a
+                >
+              </div>
+            </div>
+            <div class="containerCard">
+              <div class="containerTextCard">
+                <h2 id="iico">{t('iico')}</h2>
+                <p id="iico-text">
+                  {t('iico-text')}
+                </p>
+              </div>
+              <div class="containerIconsCard">
+                <div class="tech-icons">
+                  <img class="icon-project-tec" src="/SVG/html5.svg" alt="HTML5 icon project" loading="lazy"/>
+                  <img class="icon-project-tec" src="/SVG/css.svg" alt="CSS icon project" loading="lazy"/>
+                  <img class="icon-project-tec" src="/SVG/astro.svg" alt="Astro icon project" loading="lazy"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div  class="cardProject">
+            <div class="containerImage">
+              <img draggable="false" src="deptoscrud.webp" alt="Departamentos CRUD" />
+              <div class="buttons">
+                <a
+                  draggable="false" href="https://github.com/mrgiann/Departments-CRUD"
+                  target="_blank"
+                  class="github-link"><i class="fab fa-github"></i> GitHub</a
+                >
+              </div>
+            </div>
+            <div class="containerCard">
+              <div class="containerTextCard">
+                <h2 id="deptos-crud">{t('deptos-crud')}</h2>
+                <p id="deptos-crud-text">
+                  {t('deptos-crud-text')}
+                </p>
+              </div>
+              <div class="containerIconsCard">
+                <div class="tech-icons">
+                  <img class="icon-project-tec" src="/SVG/python.svg" alt="Python icon project" loading="lazy"/>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -320,6 +378,12 @@ const t = useTranslations(lang);
                   <p>MongoDB</p>
                 </div>
               </a>
+              <a draggable="false" href="https://www.python.org/" target="_blank">
+                <div class="icon">
+                  <img src="/SVG/python.svg" alt="Python icon" loading="lazy"/>
+                  <p>Python</p>
+                </div>
+              </a>
             </div>
           </div>
           <div class="containerothers">
@@ -349,7 +413,7 @@ const t = useTranslations(lang);
               <a draggable="false" href="https://visualstudio.microsoft.com/" target="_blank">
                 <div class="icon">
                   <img src="/SVG/visualstudio.svg" alt="Visual Studio icon" loading="lazy"/>
-                  <p>Visual Studio</p>
+                  <p>VS Code</p>
                 </div>
               </a>
               <a draggable="false" href="https://www.sublimetext.com/" target="_blank">
