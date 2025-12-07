@@ -431,20 +431,6 @@ a {
     }
 }
 
-@media screen and (max-width: 880px) {
-    .inicio {
-        height: 100vh;
-    }
-
-    .inicio img {
-        width: 200px;
-    }
-
-    .close {
-        display: none;
-    }
-}
-
 @media screen and (max-width: 1100px) {
     .inicio .containerImg {
         display: none;
@@ -460,6 +446,23 @@ a {
 
     .navbar-actions {
         margin-right: 3.7%;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .inicio {
+        height: 100vh;
+    }
+
+    .inicio img {
+        width: 200px;
+    }
+
+    .close {
+        display: none;
+    }
+    .navbar-links {
+        margin-left: 0;
     }
 }
 

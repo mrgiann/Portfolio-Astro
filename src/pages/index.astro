@@ -610,131 +610,190 @@ const t = useTranslations(lang);
                     <p>JavaScript</p>
                   </div>
                 </a>
-                <a <p>Vite</a>
+                <a
+                  draggable="false"
+                  href="https://reactjs.org/"
+                  target="_blank"
+                >
+                  <div class="icon">
+                    <img src="/SVG/react.svg" alt="React icon" loading="lazy" />
+                    <p>React</p>
+                  </div>
+                </a>
+                <a draggable="false" href="https://vitejs.dev/" target="_blank">
+                  <div class="icon">
+                    <img src="/SVG/vite.svg" alt="Vite icon" loading="lazy" />
+                    <p>Vite</p>
+                  </div>
+                </a>
+                <a draggable="false" href="https://vue.io/" target="_blank">
+                  <div class="icon">
+                    <img src="/SVG/vue.svg" alt="Vue icon" loading="lazy" />
+                    <p>Vue</p>
+                  </div>
+                </a>
+                <a
+                  draggable="false"
+                  href="https://astro.build/"
+                  target="_blank"
+                >
+                  <div class="icon">
+                    <img src="/SVG/astro.svg" alt="Astro icon" loading="lazy" />
+                    <p>Astro</p>
+                  </div>
+                </a>
               </div>
             </div>
-            <a draggable="false" href="https://vue.io/" target="_blank">
-              <div class="icon">
-                <img src="/SVG/vue.svg" alt="Vue icon" loading="lazy" />
-                <p>Vue</p>
+            <div class="containerbackend">
+              <div class="containerhr">
+                <h2>Backend</h2>
+                <hr />
               </div>
-            </a>
-            <a draggable="false" href="https://astro.build/" target="_blank">
-              <div class="icon">
-                <img src="/SVG/astro.svg" alt="Astro icon" loading="lazy" />
-                <p>Astro</p>
+              <div class="backend">
+                <a draggable="false" href="https://nodejs.org/" target="_blank">
+                  <div class="icon">
+                    <img
+                      src="/SVG/nodejs.svg"
+                      alt="Node.js icon"
+                      loading="lazy"
+                    />
+                    <p>Node.js</p>
+                  </div>
+                </a>
+                <a
+                  draggable="false"
+                  href="https://expressjs.com/"
+                  target="_blank"
+                >
+                  <div class="icon">
+                    <img
+                      src="/SVG/express.svg"
+                      alt="Express.js icon"
+                      loading="lazy"
+                    />
+                    <p>Express.js</p>
+                  </div>
+                </a>
+                <a
+                  draggable="false"
+                  href="https://www.mongodb.com/"
+                  target="_blank"
+                >
+                  <div class="icon">
+                    <img
+                      src="/SVG/mongodb.svg"
+                      alt="MongoDB icon"
+                      loading="lazy"
+                    />
+                    <p>MongoDB</p>
+                  </div>
+                </a>
+                <a
+                  draggable="false"
+                  href="https://www.python.org/"
+                  target="_blank"
+                >
+                  <div class="icon">
+                    <img
+                      src="/SVG/python.svg"
+                      alt="Python icon"
+                      loading="lazy"
+                    />
+                    <p>Python</p>
+                  </div>
+                </a>
               </div>
-            </a>
-          </div>
-        </div>
-        <div class="containerbackend">
-          <div class="containerhr">
-            <h2>Backend</h2>
-            <hr />
-          </div>
-          <div class="backend">
-            <a draggable="false" href="https://nodejs.org/" target="_blank">
-              <div class="icon">
-                <img src="/SVG/nodejs.svg" alt="Node.js icon" loading="lazy" />
-                <p>Node.js</p>
+            </div>
+            <div class="containerothers">
+              <div class="containerhr">
+                <h2 id="other">{t("other")}</h2>
+                <hr />
               </div>
-            </a>
-            <a draggable="false" href="https://expressjs.com/" target="_blank">
-              <div class="icon">
-                <img
-                  src="/SVG/express.svg"
-                  alt="Express.js icon"
-                  loading="lazy"
-                />
-                <p>Express.js</p>
+              <div class="others">
+                <a
+                  draggable="false"
+                  href="https://git-scm.com/"
+                  target="_blank"
+                >
+                  <div class="icon">
+                    <img src="/SVG/git.svg" alt="Git icon" loading="lazy" />
+                    <p>Git</p>
+                  </div>
+                </a>
+                <a draggable="false" href="https://github.com/" target="_blank">
+                  <div class="icon">
+                    <img
+                      src="/SVG/github.svg"
+                      alt="GitHub icon"
+                      loading="lazy"
+                    />
+                    <p>GitHub</p>
+                  </div>
+                </a>
+                <a
+                  draggable="false"
+                  href="https://www.netlify.com/"
+                  target="_blank"
+                >
+                  <div class="icon">
+                    <img
+                      src="/SVG/netlify.svg"
+                      alt="Netlify icon"
+                      loading="lazy"
+                    />
+                    <p>Netlify</p>
+                  </div>
+                </a>
+                <a
+                  draggable="false"
+                  href="https://www.figma.com/"
+                  target="_blank"
+                >
+                  <div class="icon">
+                    <img src="/SVG/figma.svg" alt="Figma icon" loading="lazy" />
+                    <p>Figma</p>
+                  </div>
+                </a>
+                <a
+                  draggable="false"
+                  href="https://www.npmjs.com/"
+                  target="_blank"
+                >
+                  <div class="icon">
+                    <img src="/SVG/npm.svg" alt="npm icon" loading="lazy" />
+                    <p>npm</p>
+                  </div>
+                </a>
+                <a
+                  draggable="false"
+                  href="https://visualstudio.microsoft.com/"
+                  target="_blank"
+                >
+                  <div class="icon">
+                    <img
+                      src="/SVG/visualstudio.svg"
+                      alt="Visual Studio icon"
+                      loading="lazy"
+                    />
+                    <p>VS Code</p>
+                  </div>
+                </a>
+                <a
+                  draggable="false"
+                  href="https://www.sublimetext.com/"
+                  target="_blank"
+                >
+                  <div class="icon">
+                    <img
+                      src="/SVG/sublimetext.svg"
+                      alt="Sublime Text icon"
+                      loading="lazy"
+                    />
+                    <p>Sublime Text</p>
+                  </div>
+                </a>
               </div>
-            </a>
-            <a
-              draggable="false"
-              href="https://www.mongodb.com/"
-              target="_blank"
-            >
-              <div class="icon">
-                <img src="/SVG/mongodb.svg" alt="MongoDB icon" loading="lazy" />
-                <p>MongoDB</p>
-              </div>
-            </a>
-            <a draggable="false" href="https://www.python.org/" target="_blank">
-              <div class="icon">
-                <img src="/SVG/python.svg" alt="Python icon" loading="lazy" />
-                <p>Python</p>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="containerothers">
-          <div class="containerhr">
-            <h2 id="other">{t("other")}</h2>
-            <hr />
-          </div>
-          <div class="others">
-            <a draggable="false" href="https://git-scm.com/" target="_blank">
-              <div class="icon">
-                <img src="/SVG/git.svg" alt="Git icon" loading="lazy" />
-                <p>Git</p>
-              </div>
-            </a>
-            <a draggable="false" href="https://github.com/" target="_blank">
-              <div class="icon">
-                <img src="/SVG/github.svg" alt="GitHub icon" loading="lazy" />
-                <p>GitHub</p>
-              </div>
-            </a>
-            <a
-              draggable="false"
-              href="https://www.netlify.com/"
-              target="_blank"
-            >
-              <div class="icon">
-                <img src="/SVG/netlify.svg" alt="Netlify icon" loading="lazy" />
-                <p>Netlify</p>
-              </div>
-            </a>
-            <a draggable="false" href="https://www.figma.com/" target="_blank">
-              <div class="icon">
-                <img src="/SVG/figma.svg" alt="Figma icon" loading="lazy" />
-                <p>Figma</p>
-              </div>
-            </a>
-            <a draggable="false" href="https://www.npmjs.com/" target="_blank">
-              <div class="icon">
-                <img src="/SVG/npm.svg" alt="npm icon" loading="lazy" />
-                <p>npm</p>
-              </div>
-            </a>
-            <a
-              draggable="false"
-              href="https://visualstudio.microsoft.com/"
-              target="_blank"
-            >
-              <div class="icon">
-                <img
-                  src="/SVG/visualstudio.svg"
-                  alt="Visual Studio icon"
-                  loading="lazy"
-                />
-                <p>VS Code</p>
-              </div>
-            </a>
-            <a
-              draggable="false"
-              href="https://www.sublimetext.com/"
-              target="_blank"
-            >
-              <div class="icon">
-                <img
-                  src="/SVG/sublimetext.svg"
-                  alt="Sublime Text icon"
-                  loading="lazy"
-                />
-                <p>Sublime Text</p>
-              </div>
-            </a>
+            </div>
           </div>
         </div>
       </div>

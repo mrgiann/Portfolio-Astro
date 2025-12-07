@@ -161,6 +161,7 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="container">
           <div className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
+            <div className="menu-title">Menú</div>
             <a href="#about">
               <button id='about-navbar' onClick={closeMenus}>{t('about-navbar')}</button>
             </a>
