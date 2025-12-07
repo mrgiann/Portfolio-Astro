@@ -148,6 +148,26 @@ const Navbar = () => {
             document.documentElement.style.setProperty('--theme-input-filter', 'none');
             document.documentElement.style.setProperty('--language-input-filter', 'none');
         }
+
+        // Cambiar el icono de Express del primer proyecto según el tema
+        const expressIcon = document.getElementById('first-project-express-icon');
+        if (expressIcon) {
+            if (theme === 'moon' || theme === 'sunset') {
+                expressIcon.src = '/SVG/expressw.svg'; // Icono blanco
+            } else {
+                expressIcon.src = '/SVG/express.svg'; // Icono negro
+            }
+        }
+
+        // Cambiar el icono de Express en la sección de Skills según el tema
+        const skillsExpressIcon = document.getElementById('skills-express-icon');
+        if (skillsExpressIcon) {
+            if (theme === 'moon' || theme === 'sunset') {
+                skillsExpressIcon.src = '/SVG/expressw.svg'; // Icono blanco
+            } else {
+                skillsExpressIcon.src = '/SVG/express.svg'; // Icono negro
+            }
+        }
     }
 };
 

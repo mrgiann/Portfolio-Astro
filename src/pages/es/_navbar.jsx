@@ -3,7 +3,7 @@ import '../../assets/navbar.css';
 import { languages } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/utils';
 
-const lang = 'fr';
+const lang = 'es';
 const t = useTranslations(lang);
 // {t('nombre-del-texto')}
 
@@ -40,7 +40,7 @@ const Navbar = () => {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState('moon');
-  const [selectedLanguage, setSelectedLanguage] = useState('french');
+  const [selectedLanguage, setSelectedLanguage] = useState('spanish');
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('selectedTheme');
@@ -148,6 +148,26 @@ const Navbar = () => {
             document.documentElement.style.setProperty('--theme-input-filter', 'none');
             document.documentElement.style.setProperty('--language-input-filter', 'none');
         }
+
+        // Cambiar el icono de Express del primer proyecto según el tema
+        const expressIcon = document.getElementById('first-project-express-icon');
+        if (expressIcon) {
+            if (theme === 'moon' || theme === 'sunset') {
+                expressIcon.src = '/SVG/expressw.svg'; // Icono blanco
+            } else {
+                expressIcon.src = '/SVG/express.svg'; // Icono negro
+            }
+        }
+
+        // Cambiar el icono de Express en la sección de Skills según el tema
+        const skillsExpressIcon = document.getElementById('skills-express-icon');
+        if (skillsExpressIcon) {
+            if (theme === 'moon' || theme === 'sunset') {
+                skillsExpressIcon.src = '/SVG/expressw.svg'; // Icono blanco
+            } else {
+                skillsExpressIcon.src = '/SVG/express.svg'; // Icono negro
+            }
+        }
     }
 };
 
@@ -161,7 +181,7 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="container">
           <div className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
-            <div className="menu-title">Menu</div>
+            <div className="menu-title">Menú</div>
             <a href="#about">
               <button id='about-navbar' onClick={closeMenus}>{t('about-navbar')}</button>
             </a>
