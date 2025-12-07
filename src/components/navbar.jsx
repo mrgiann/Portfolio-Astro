@@ -177,7 +177,11 @@ const Navbar = () => {
           </div>
 
           <button className="menu-toggle" aria-label="Abrir menú" onClick={toggleMenu}>
-            <img alt='button_nav' id='hamburgerr' src='SVG/hamburger_white.svg' style={{ width: '43px', height: 'auto' }} className={`fas fa-bars ${isMenuOpen ? 'open' : ''}`} />
+            <div className={`hamburger ${isMenuOpen ? 'open' : ''}`}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </button>
 
           <div className="navbar-actions">
