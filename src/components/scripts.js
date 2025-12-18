@@ -5,10 +5,11 @@ document.getElementById('copy-btn').addEventListener('click', function () {
 
   // Usar la API del portapapeles
   navigator.clipboard.writeText(textToCopy).then(() => {
-    // Cambiar el texto del botón a "Copied"
+    // Cambiar el texto del botón al texto localizado
     var span = this.querySelector('span');
     var originalText = span.textContent;
-    span.textContent = 'Copied';
+    var copiedText = this.dataset.copiedText || 'Copied';
+    span.textContent = copiedText;
 
     // Volver al texto original después de 2 segundos
     setTimeout(() => {
@@ -48,18 +49,7 @@ modal.onclick = function (event) {
 };
 
 
-function addface() {
-  const typingText = document.getElementById("typing-text");
-  setTimeout(() => {
-    typingText.innerHTML += " :)";
-    setTimeout(() => {
-      typingText.innerHTML = typingText.innerHTML.replace(" :)", "");
-    }, 4000);
-  }, 10000);
-}
-window.onload = function () {
-  addface();
-};
+
 
 
 

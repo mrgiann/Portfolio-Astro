@@ -122,7 +122,6 @@
     border-bottom: 1px solid white;
     width: 100%;
     text-align: center;
-    padding-bottom: 5px;
     margin-bottom: 0;
   }
 
@@ -146,12 +145,28 @@
     width: 100%;
     margin: 0;
     border: none;
-    border-top: 1px solid white;
     border-bottom: 1px solid white;
     background: var(--color-fondo-menu);
     cursor: pointer;
     transition: background-color 0.3s ease;
-    border-radius: 0;
+    border-radius: 0 !important;
+  }
+
+  .navbar-links :nth-child(2) button {
+    padding-top: 0.8rem;
+    border-top: 1px solid white;
+  }
+
+  .navbar-links :nth-child(3) button {
+    padding-top: 0.8rem;
+  }
+
+  .navbar-links :nth-child(4) button {
+    padding-top: 0.8rem;
+  }
+
+  .navbar-links :nth-child(5) button {
+    padding-top: 0.8rem;
   }
 
   .navbar-links a button:hover {
@@ -258,8 +273,6 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  position: relative;
-  bottom: 0.625rem;
 }
 
 .language-options label {
@@ -274,6 +287,25 @@
 
 .language-options input {
   margin-right: 0.625rem;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 11px;
+  height: 11px;
+  border: 1.5px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.language-options input:checked {
+  background-color: white;
+}
+
+.language-options input:hover {
+  border-color: #ccc;
 }
 
 .menu-overlay {
@@ -342,7 +374,7 @@
 .theme-options.open {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .theme-select-container img {
@@ -369,9 +401,30 @@
   align-items: center;
   gap: 0.625rem;
   height: 100%;
-  border-top: 0.063rem solid white;
-  border-bottom: 0.063rem solid white;
   background-color: var(--color-fondo-menu);
+}
+
+.theme-options .theme-option {
+  border-bottom: 0.063rem solid white;
+}
+
+.theme-options :nth-child(2) {
+  border-top: 1px solid white;
+}
+
+.theme-options span {
+  border-top: none !important;
+}
+
+.theme-title {
+  color: white;
+  font-size: 1rem;
+  display: block;
+  position: relative;
+  border-bottom: 0.063rem solid white;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .theme-option:hover {
@@ -432,11 +485,20 @@
   border-bottom: 0.063rem solid white;
   width: 100%;
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
 .language-options :nth-child(2) {
   border-top: 1px solid white;
+}
+
+
+.language-options img {
+  border-top: none !important;
+}
+
+.language-options label {
+  padding-left: 10px;
 }
 
 .language-options :nth-child(2):hover {

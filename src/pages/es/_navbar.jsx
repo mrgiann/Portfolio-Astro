@@ -214,7 +214,7 @@ const Navbar = () => {
             <div className="language-select-container">
               <div className="idioma">
                 <img
-                  src="../language.svg"
+                  src="/SVG/language.svg"
                   alt="Idioma"
                   className="language-input"
                   onClick={toggleLanguage}
@@ -230,8 +230,19 @@ const Navbar = () => {
                     checked={selectedLanguage === 'english'}
                     onChange={() => handleLanguageChange('en')}
                   />
-                  <img src="../en.webp" alt="English" />
+                  <img src="/SVG/uk.svg" alt="English" />
                   English
+                </label>
+                <label>
+                  <input
+                    id='spanishh'
+                    type="radio"
+                    value="spanish"
+                    checked={selectedLanguage === 'spanish'}
+                    onChange={() => handleLanguageChange('es')}
+                  />
+                  <img src="/SVG/spain.svg" alt="Español" />
+                  Español
                 </label>
                 <label>
                   <input
@@ -241,7 +252,7 @@ const Navbar = () => {
                     checked={selectedLanguage === 'french'}
                     onChange={() => handleLanguageChange('fr')}
                   />
-                  <img src="../fr.webp" alt="Français" />
+                  <img src="/SVG/france.svg" alt="Français" />
                   Français
                 </label>
                 <label>
@@ -252,19 +263,8 @@ const Navbar = () => {
                     checked={selectedLanguage === 'portuguese'}
                     onChange={() => handleLanguageChange('pt')}
                   />
-                  <img src="../pt.webp" alt="Português" />
+                  <img src="/SVG/brazil.svg" alt="Português" />
                   Português
-                </label>
-                <label>
-                  <input
-                    id='spanishh'
-                    type="radio"
-                    value="spanish"
-                    checked={selectedLanguage === 'spanish'}
-                    onChange={() => handleLanguageChange('es')}
-                  />
-                  <img src="../es.webp" alt="Español" />
-                  Español
                 </label>
               </div>
             </div>
