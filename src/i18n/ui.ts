@@ -62,7 +62,8 @@ export const ui = {
     'sunset-navbar': 'Sunset',
     'sunrise-navbar': 'Sunrise',
     'language-navbar': 'Language',
-    'copied': 'Copied'
+    'copied': 'Copied',
+    'available': 'Available for work'
   },
   es: {
     'nav.home': 'Inicio',
@@ -117,7 +118,8 @@ export const ui = {
     'sunset-navbar': 'Atardecer',
     'sunrise-navbar': 'Amanecer',
     'language-navbar': 'Idioma',
-    'copied': 'Copiado'
+    'copied': 'Copiado',
+    'available': 'Disponible para trabajar'
   },
   fr: {
     'nav.home': 'Accueil',
@@ -172,7 +174,8 @@ export const ui = {
     'sunset-navbar': 'Coucher du soleil',
     'sunrise-navbar': 'Lever du soleil',
     'language-navbar': 'Langue',
-    'copied': 'Copié'
+    'copied': 'Copié',
+    'available': 'Disponible pour travailler'
   },
   pt: {
     'nav.home': 'Início',
@@ -227,6 +230,7 @@ export const ui = {
     'pôr-do-sol-navbar': 'Pôr do sol',
     'nascer-do-sol-navbar': 'Nascer do sol',
     'language-navbar': 'Idioma',
-    'copied': 'Copiado'
+    'copied': 'Copiado',
+    'available': 'Disponível para trabalhar'
   }
 };
