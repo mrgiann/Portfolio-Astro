@@ -24,7 +24,6 @@ body {
 
 * {
     cursor: none !important;
-    /* Oculta el cursor predeterminado */
 }
 
 
@@ -32,7 +31,7 @@ body {
     width: 30px;
     height: 30px;
     border: 2px solid var(--color-texto);
-    box-shadow: 0 0 0 2px black; /* Borde externo */
+    box-shadow: 0 0 0 2px black;
     position: fixed;
     pointer-events: none;
     border-radius: 50%;
@@ -59,11 +58,13 @@ body {
     transition: width 0.3s, height 0.3s;
 }
 
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
+
     .cursor-outline,
     .cursor-dot {
         display: none;
     }
+
     * {
         cursor: default !important;
     }
@@ -82,11 +83,11 @@ body {
 }
 
 img {
-    -webkit-user-drag: none;  /* Deshabilita el arrastre en navegadores basados en WebKit */
-    -webkit-user-select: none; /* Deshabilita la selección en navegadores WebKit (Chrome, Safari) */
-    -moz-user-select: none;    /* Deshabilita la selección en Firefox */
-    -ms-user-select: none;     /* Deshabilita la selección en Internet Explorer/Edge */
-    user-select: none;         /* Deshabilita la selección en navegadores compatibles */
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 ::-webkit-scrollbar {
@@ -461,6 +462,7 @@ a {
     .close {
         display: none;
     }
+
     .navbar-links {
         margin-left: 0;
     }
@@ -537,13 +539,6 @@ a {
     justify-content: center;
     padding-left: 5%;
     padding-right: 5%;
-
-
-    /* 
-    animation: reveal 0.8s ease both;
-    animation-timeline: view();
-    animation-range: entry 50%5cover 60%6  */
-
 }
 
 @keyframes reveal {
@@ -677,12 +672,13 @@ a {
     margin: auto;
     display: block;
 }
+
 @media (max-width: 600px) {
     .modal-content {
         max-width: 100%;
         max-height: 100%;
     }
-    
+
 }
 
 .close {
@@ -1124,7 +1120,6 @@ footer {
 #copy-message {
     position: absolute;
     top: -30px;
-    /* Coloca el mensaje justo arriba del botón */
     left: 0;
     padding: 5px;
     background-color: #4CAF50;
@@ -1136,14 +1131,14 @@ footer {
 
 
 
-.tech-icons .icon-project-tec{
+.tech-icons .icon-project-tec {
     width: 33px;
     height: 31px;
     margin-bottom: 0;
     padding: 0;
 }
 
-#copyy{
+#copyy {
     width: 13.30px;
     height: 20px;
     position: relative;
@@ -1152,7 +1147,8 @@ footer {
     transition: filter 0.3s ease;
 }
 
-.social-links-title #github, .social-links-title img#linkedin{
+.social-links-title #github,
+.social-links-title img#linkedin {
     filter: var(--theme-input-filter, none);
     transition: filter 0.3s ease;
     width: auto;
@@ -1161,7 +1157,9 @@ footer {
     top: 4px;
 }
 
-.social-links #github, .social-links img#linkedin, .social-links #instagram{
+.social-links #github,
+.social-links img#linkedin,
+.social-links #instagram {
     filter: var(--theme-input-filter, none);
     transition: filter 0.3s ease;
     width: 16.30px;
@@ -1170,11 +1168,11 @@ footer {
     top: 4px;
 }
 
-.social-links{
+.social-links {
     margin-bottom: 10px;
 }
 
-#hamburgerr{
+#hamburgerr {
     width: auto;
     height: auto;
     position: relative;
@@ -1185,7 +1183,7 @@ footer {
 }
 
 @media screen and (max-width: 880px) {
-.navbar-actions{
-    margin-right: 28px;
-}
+    .navbar-actions {
+        margin-right: 28px;
+    }
 }

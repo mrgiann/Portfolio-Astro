@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import '../../assets/navbar.css';
 import { languages } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/utils';
 
 const lang = 'es';
 const t = useTranslations(lang);
-// {t('nombre-del-texto')}
 
 const themes = {
   moon: ['#0B0C0D', '#0F0F0F', '#181818', '#ffffff', '#020202', '#9e9e9e', '#d2d438', '#333333', '#333333'],
@@ -21,7 +20,8 @@ const themesThg = {
   sunrise: ['#271313FF', '#271313FF', '#271313FF', '#271313FF', '#271313FF', '#271313FF', '#af6f69'],
 };
 
-const ColorCircles = ({ theme }) => {
+// Memoized ColorCircles component to prevent unnecessary re-renders
+const ColorCircles = React.memo(({ theme }) => {
   return (
     <div className="color-circles">
       {themes[theme].map((color, index) => (
@@ -33,7 +33,7 @@ const ColorCircles = ({ theme }) => {
       ))}
     </div>
   );
-};
+});
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,134 +42,108 @@ const Navbar = () => {
   const [selectedTheme, setSelectedTheme] = useState('moon');
   const [selectedLanguage, setSelectedLanguage] = useState('spanish');
 
+  // Batched CSS update function using requestAnimationFrame
+  const updateThemeStyles = useCallback((theme) => {
+    const colors = themes[theme];
+    const thgColors = themesThg[theme];
+
+    requestAnimationFrame(() => {
+      const root = document.documentElement.style;
+
+      // Batch all CSS variable updates in a single frame
+      root.setProperty('--color-navbar', colors[0]);
+      root.setProperty('--color-fondo', colors[1]);
+      root.setProperty('--color-fondo-card', colors[2]);
+      root.setProperty('--color-texto', colors[3]);
+      root.setProperty('--color-fondo-menu', colors[4]);
+      root.setProperty('--color-text-secundario', colors[5]);
+      root.setProperty('--color-scroll-down-hover', colors[5]);
+      root.setProperty('--color-texto-titulo', colors[6]);
+      root.setProperty('--color-fondo-titulos', colors[7]);
+      root.setProperty('--color-scroll-down', colors[8]);
+
+      if (thgColors) {
+        root.setProperty('--html', thgColors[0]);
+        root.setProperty('--css', thgColors[1]);
+        root.setProperty('--js', thgColors[2]);
+        root.setProperty('--bts', thgColors[3]);
+        root.setProperty('--cloud', thgColors[4]);
+        root.setProperty('--react', thgColors[5]);
+        root.setProperty('--icon', thgColors[6]);
+
+        // Apply brightness filter
+        const filterValue = (theme === 'sun' || theme === 'sunrise') ? 'brightness(0.1)' : 'none';
+        root.setProperty('--theme-input-filter', filterValue);
+        root.setProperty('--language-input-filter', filterValue);
+
+        // Update Express icons with cached DOM references
+        const iconSrc = (theme === 'moon' || theme === 'sunset') ? '/SVG/expressw.svg' : '/SVG/express.svg';
+        const expressIcon = document.getElementById('first-project-express-icon');
+        const skillsExpressIcon = document.getElementById('skills-express-icon');
+
+        if (expressIcon) expressIcon.src = iconSrc;
+        if (skillsExpressIcon) skillsExpressIcon.src = iconSrc;
+      }
+    });
+  }, []);
+
   useEffect(() => {
     const savedTheme = localStorage.getItem('selectedTheme');
     if (savedTheme) {
       setSelectedTheme(savedTheme);
       updateThemeStyles(savedTheme);
-      updateThemeStyless(savedTheme);
     }
+  }, [updateThemeStyles]);
+
+  // Memoized toggle functions to prevent re-creation on every render
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen(prev => !prev);
+    setIsLanguageOpen(false);
+    setIsThemeOpen(false);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    setIsLanguageOpen(false);
-    setIsThemeOpen(false);
-  };
-
-  const toggleLanguage = () => {
-    setIsLanguageOpen(!isLanguageOpen);
+  const toggleLanguage = useCallback(() => {
+    setIsLanguageOpen(prev => !prev);
     setIsMenuOpen(false);
     setIsThemeOpen(false);
-  };
+  }, []);
 
-  const toggleThemeMenu = () => {
-    setIsThemeOpen(!isThemeOpen);
+  const toggleThemeMenu = useCallback(() => {
+    setIsThemeOpen(prev => !prev);
     setIsMenuOpen(false);
     setIsLanguageOpen(false);
-  };
+  }, []);
 
-  const closeMenus = () => {
+  const closeMenus = useCallback(() => {
     setIsMenuOpen(false);
     setIsLanguageOpen(false);
     setIsThemeOpen(false);
-  };
+  }, []);
 
-  const changeTheme = (theme) => {
+  // Memoized theme change handler
+  const handleThemeChange = useCallback((theme) => {
     setSelectedTheme(theme);
-    localStorage.setItem('selectedTheme', theme); // Guardar el tema en localStorage
+    localStorage.setItem('selectedTheme', theme);
     updateThemeStyles(theme);
-    updateThemeStyless(theme);
     setIsThemeOpen(false);
-  };
+  }, [updateThemeStyles]);
 
-  const changeLanguage = (language) => {
+  // Memoized language change handler
+  const handleLanguageChange = useCallback((language) => {
     setSelectedLanguage(language);
     setIsLanguageOpen(false);
-  
-    if (language === 'en') {
-      window.location.href = '/en/';
+
+    const routes = {
+      en: '/en/',
+      es: '/es/',
+      fr: '/fr/',
+      pt: '/pt/'
+    };
+
+    if (routes[language]) {
+      window.location.href = routes[language];
     }
-    else if (language === 'es') {
-      window.location.href = '/es/';
-    }
-    else if (language === 'fr') {
-      window.location.href = '/fr/';
-    }
-    else if (language === 'pt') {
-      window.location.href = '/pt/';
-    }
-  };
-
-  const themeImages = {
-    moon: '../logo.webp',
-    sun: '../logoclaro.webp',
-    sunset: '../logoatardecer.webp',
-    sunrise: '../logoamanecer.webp',
-  };
-
-  // Función para actualizar las variables de CSS según el tema seleccionado
-  const updateThemeStyles = (theme) => {
-    const colors = themes[theme];
-    document.documentElement.style.setProperty('--color-navbar', colors[0]);
-    document.documentElement.style.setProperty('--color-fondo', colors[1]);
-    document.documentElement.style.setProperty('--color-fondo-card', colors[2]);
-    document.documentElement.style.setProperty('--color-texto', colors[3]);
-    document.documentElement.style.setProperty('--color-fondo-menu', colors[4]);
-    document.documentElement.style.setProperty('--color-text-secundario', colors[5]);
-    document.documentElement.style.setProperty('--color-scroll-down-hover', colors[5]);
-    document.documentElement.style.setProperty('--color-texto-titulo', colors[6]);
-    document.documentElement.style.setProperty('--color-fondo-titulos', colors[7]);
-    document.documentElement.style.setProperty('--color-scroll-down', colors[8]);
-
-    // Cambiar la imagen del contenedor
-    const imgElement = document.querySelector('.containerImg img');
-    if (imgElement && themeImages[theme]) {
-      imgElement.src = themeImages[theme];
-    }
-  };
-
-  const updateThemeStyless = (theme) => {
-    const colors = themesThg[theme];
-    if (colors) {
-        document.documentElement.style.setProperty('--html', colors[0]);
-        document.documentElement.style.setProperty('--css', colors[1]);
-        document.documentElement.style.setProperty('--js', colors[2]);
-        document.documentElement.style.setProperty('--bts', colors[3]);
-        document.documentElement.style.setProperty('--cloud', colors[4]);
-        document.documentElement.style.setProperty('--react', colors[5]);
-        document.documentElement.style.setProperty('--icon', colors[6]);
-
-        // Aplicar brillo según el tema
-        if (theme === 'sun' || theme === 'sunrise') {
-            document.documentElement.style.setProperty('--theme-input-filter', 'brightness(0.1)');
-            document.documentElement.style.setProperty('--language-input-filter', 'brightness(0.1)');
-        } else {
-            document.documentElement.style.setProperty('--theme-input-filter', 'none');
-            document.documentElement.style.setProperty('--language-input-filter', 'none');
-        }
-
-        // Cambiar el icono de Express del primer proyecto según el tema
-        const expressIcon = document.getElementById('first-project-express-icon');
-        if (expressIcon) {
-            if (theme === 'moon' || theme === 'sunset') {
-                expressIcon.src = '/SVG/expressw.svg'; // Icono blanco
-            } else {
-                expressIcon.src = '/SVG/express.svg'; // Icono negro
-            }
-        }
-
-        // Cambiar el icono de Express en la sección de Skills según el tema
-        const skillsExpressIcon = document.getElementById('skills-express-icon');
-        if (skillsExpressIcon) {
-            if (theme === 'moon' || theme === 'sunset') {
-                skillsExpressIcon.src = '/SVG/expressw.svg'; // Icono blanco
-            } else {
-                skillsExpressIcon.src = '/SVG/express.svg'; // Icono negro
-            }
-        }
-    }
-};
+  }, []);
 
   return (
     <div className={`navbar ${isMenuOpen || isLanguageOpen || isThemeOpen ? 'menu-open' : ''}`}>
@@ -181,7 +155,7 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="container">
           <div className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
-            <div className="menu-title">Menú</div>
+            <div className="menu-title">Menu</div>
             <a href="#about">
               <button id='about-navbar' onClick={closeMenus}>{t('about-navbar')}</button>
             </a>
@@ -214,22 +188,22 @@ const Navbar = () => {
               />
               <div className={`theme-options ${isThemeOpen ? 'open' : ''}`}>
                 <div id='theme-navbar' className="theme-title">Theme</div>
-                <div className="theme-option" onClick={() => changeTheme('moon')}>
+                <div className="theme-option" onClick={() => handleThemeChange('moon')}>
                   <img src="../moon.webp" alt="Moon" />
                   <span id='moon-navbar'>{t('moon-navbar')}</span>
                   <ColorCircles theme="moon" />
                 </div>
-                <div className="theme-option" onClick={() => changeTheme('sun')}>
+                <div className="theme-option" onClick={() => handleThemeChange('sun')}>
                   <img src="../sun.webp" alt="Sun" />
                   <span id='sun-navbar'>{t('sun-navbar')}</span>
                   <ColorCircles theme="sun" />
                 </div>
-                <div className="theme-option" onClick={() => changeTheme('sunset')}>
+                <div className="theme-option" onClick={() => handleThemeChange('sunset')}>
                   <img src="../sunset.webp" alt="Sunset" />
                   <span id='sunset-navbar'>{t('sunset-navbar')}</span>
                   <ColorCircles theme="sunset" />
                 </div>
-                <div className="theme-option" onClick={() => changeTheme('sunrise')}>
+                <div className="theme-option" onClick={() => handleThemeChange('sunrise')}>
                   <img src="../sunrise.webp" alt="Sunrise" />
                   <span id='sunrise-navbar'>{t('sunrise-navbar')}</span>
                   <ColorCircles theme="sunrise" />
@@ -254,7 +228,7 @@ const Navbar = () => {
                     type="radio"
                     value="english"
                     checked={selectedLanguage === 'english'}
-                    onChange={() => changeLanguage('en')}
+                    onChange={() => handleLanguageChange('en')}
                   />
                   <img src="../en.webp" alt="English" />
                   English
@@ -265,7 +239,7 @@ const Navbar = () => {
                     type="radio"
                     value="french"
                     checked={selectedLanguage === 'french'}
-                    onChange={() => changeLanguage('fr')}
+                    onChange={() => handleLanguageChange('fr')}
                   />
                   <img src="../fr.webp" alt="Français" />
                   Français
@@ -276,7 +250,7 @@ const Navbar = () => {
                     type="radio"
                     value="portuguese"
                     checked={selectedLanguage === 'portuguese'}
-                    onChange={() => changeLanguage('pt')}
+                    onChange={() => handleLanguageChange('pt')}
                   />
                   <img src="../pt.webp" alt="Português" />
                   Português
@@ -287,7 +261,7 @@ const Navbar = () => {
                     type="radio"
                     value="spanish"
                     checked={selectedLanguage === 'spanish'}
-                    onChange={() => changeLanguage('es')}
+                    onChange={() => handleLanguageChange('es')}
                   />
                   <img src="../es.webp" alt="Español" />
                   Español
