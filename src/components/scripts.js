@@ -1,4 +1,4 @@
-document.getElementById('copy-btn').addEventListener('click', function() {
+document.getElementById('copy-btn').addEventListener('click', function () {
   // Obtener el valor del campo de texto
   var emailInput = document.getElementById('email');
   var textToCopy = emailInput.value;
@@ -9,7 +9,7 @@ document.getElementById('copy-btn').addEventListener('click', function() {
     var span = this.querySelector('span');
     var originalText = span.textContent;
     span.textContent = 'Copied';
-    
+
     // Volver al texto original después de 2 segundos
     setTimeout(() => {
       span.textContent = originalText;
@@ -27,19 +27,21 @@ var modalImg = document.querySelector(".modalImage");
 var closeBtn = document.getElementsByClassName("close")[0];
 
 // Funcionalidad para las imágenes de las certificaciones
-document.querySelector(".certifications img").onclick = function() {
-  modal.style.display = "flex";
-  modalImg.src = this.src;      
-};
+document.querySelectorAll(".certifications img").forEach(function (img) {
+  img.onclick = function () {
+    modal.style.display = "flex";
+    modalImg.src = this.src;
+  };
+});
 
 // Botón de cierre
-closeBtn.onclick = function(event) {
-  event.stopPropagation(); 
+closeBtn.onclick = function (event) {
+  event.stopPropagation();
   modal.style.display = "none";  // Cerrar el modal
 };
 
 // Cerrar el modal al hacer clic fuera de la imagen
-modal.onclick = function(event) {
+modal.onclick = function (event) {
   if (event.target === modal) {
     modal.style.display = "none";
   }

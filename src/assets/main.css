@@ -612,13 +612,26 @@ a {
     padding-left: 30px;
 }
 
+.certifications {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
 .certifications img {
     max-width: 300px;
     width: 300px;
     height: 201px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
     animation: reveal 0.8s ease both;
     animation-timeline: view();
     animation-range: entry 10% cover 30%;
+}
+
+.certifications img:hover {
+    transform: scale(1.02);
 }
 
 .aboutText h1,
