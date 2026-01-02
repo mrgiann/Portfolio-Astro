@@ -1,30 +1,59 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useLayoutEffect, useRef } from 'react';
 import '../../assets/navbar.css';
-import { languages } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/utils';
 
-const lang = 'pt';
-const t = useTranslations(lang);
-
-const themes = {
+// Constants moved outside to prevent re-creation and frozen for safety
+const LANG = 'pt';
+const THEMES = Object.freeze({
   moon: ['#0B0C0D', '#0F0F0F', '#181818', '#ffffff', '#020202', '#9e9e9e', '#d2d438', '#333333', '#333333'],
   sun: ['#cccccc', '#ffffff', '#cecece', '#000000', '#020202', '#494949', '#303030FF', '#CCCCCC', '#c9c9c9'],
   sunset: ['#202b26', '#3c4d45', '#597065', '#ffffff', '#020202', '#a4b68d', '#96B492FF', '#96B492FF', 'rgb(102, 129, 116)'],
   sunrise: ['#F08080', '#F4978E', '#be766f', '#2C2C2CFF', '#020202', 'rgb(63, 50, 50)', '#3F3F3FFF', '#F8AD9D', 'rgb(190, 119, 112)'],
-};
+});
 
-const themesThg = {
+const THEMES_THG = Object.freeze({
   moon: ['#E34F26', '#1572B6', '#F7DF1E', '#7952B3', '#4A90E2', '#4A90E2', '#2a2e35'],
   sun: ['#303030FF', '#303030FF', '#303030FF', '#303030FF', '#303030FF', '#303030FF', '#C4C4C4FF'],
   sunset: ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#2a2e35'],
   sunrise: ['#271313FF', '#271313FF', '#271313FF', '#271313FF', '#271313FF', '#271313FF', '#af6f69'],
+});
+
+const ROUTES = Object.freeze({
+  en: '/en/',
+  es: '/es/',
+  fr: '/fr/',
+  pt: '/pt/'
+});
+
+/**
+ * Helper for safe LocalStorage access
+ */
+const storage = {
+  get: (key) => {
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      console.warn('LocalStorage access blocked:', e);
+      return null;
+    }
+  },
+  set: (key, value) => {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {
+      console.warn('LocalStorage write blocked:', e);
+    }
+  }
 };
 
 // Memoized ColorCircles component to prevent unnecessary re-renders
 const ColorCircles = React.memo(({ theme }) => {
+  const colors = THEMES[theme];
+  if (!colors) return null;
+
   return (
     <div className="color-circles">
-      {themes[theme].map((color, index) => (
+      {colors.map((color, index) => (
         <span
           key={index}
           className="circle"
@@ -35,237 +64,183 @@ const ColorCircles = React.memo(({ theme }) => {
   );
 });
 
+ColorCircles.displayName = 'ColorCircles';
+
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-  const [isThemeOpen, setIsThemeOpen] = useState(false);
+  const t = useMemo(() => useTranslations(LANG), []);
+  const [activeMenu, setActiveMenu] = useState(null); // 'menu', 'language', 'theme', or null
   const [selectedTheme, setSelectedTheme] = useState('moon');
-  const [selectedLanguage, setSelectedLanguage] = useState('portuguese');
 
-  // Batched CSS update function using requestAnimationFrame
-  const updateThemeStyles = useCallback((theme) => {
-    const colors = themes[theme];
-    const thgColors = themesThg[theme];
+  // Consistent language code
+  const [selectedLanguage, setSelectedLanguage] = useState(LANG);
 
-    requestAnimationFrame(() => {
-      const root = document.documentElement.style;
+  // Use a ref for the style root to avoid layout thrashing during updates
+  const rootRef = useRef(null);
 
-      // Batch all CSS variable updates in a single frame
-      root.setProperty('--color-navbar', colors[0]);
-      root.setProperty('--color-fondo', colors[1]);
-      root.setProperty('--color-fondo-card', colors[2]);
-      root.setProperty('--color-texto', colors[3]);
-      root.setProperty('--color-fondo-menu', colors[4]);
-      root.setProperty('--color-text-secundario', colors[5]);
-      root.setProperty('--color-scroll-down-hover', colors[5]);
-      root.setProperty('--color-texto-titulo', colors[6]);
-      root.setProperty('--color-fondo-titulos', colors[7]);
-      root.setProperty('--color-scroll-down', colors[8]);
+  /**
+   * Batched CSS update function.
+   * Applying changes via useLayoutEffect to prevent flash of unstyled theme.
+   * Optimized: Removed filter-based property updates for CPU performance.
+   */
+  const applyThemeStyles = useCallback((theme) => {
+    const colors = THEMES[theme];
+    const thgColors = THEMES_THG[theme];
+    if (!colors) return;
 
-      if (thgColors) {
-        root.setProperty('--html', thgColors[0]);
-        root.setProperty('--css', thgColors[1]);
-        root.setProperty('--js', thgColors[2]);
-        root.setProperty('--bts', thgColors[3]);
-        root.setProperty('--cloud', thgColors[4]);
-        root.setProperty('--react', thgColors[5]);
-        root.setProperty('--icon', thgColors[6]);
+    const root = rootRef.current || document.documentElement;
+    const style = root.style;
 
-        // Apply brightness filter
-        const filterValue = (theme === 'sun' || theme === 'sunrise') ? 'brightness(0.1)' : 'none';
-        root.setProperty('--theme-input-filter', filterValue);
-        root.setProperty('--language-input-filter', filterValue);
+    // Batch all CSS variable updates
+    style.setProperty('--color-navbar', colors[0]);
+    style.setProperty('--color-fondo', colors[1]);
+    style.setProperty('--color-fondo-card', colors[2]);
+    style.setProperty('--color-texto', colors[3]);
+    style.setProperty('--color-fondo-menu', colors[4]);
+    style.setProperty('--color-text-secundario', colors[5]);
+    style.setProperty('--color-scroll-down-hover', colors[5]);
+    style.setProperty('--color-texto-titulo', colors[6]);
+    style.setProperty('--color-fondo-titulos', colors[7]);
+    style.setProperty('--color-scroll-down', colors[8]);
 
-        // Update Express icons with cached DOM references
-        const iconSrc = (theme === 'moon' || theme === 'sunset') ? '/SVG/expressw.svg' : '/SVG/express.svg';
-        const expressIcon = document.getElementById('first-project-express-icon');
-        const skillsExpressIcon = document.getElementById('skills-express-icon');
+    if (thgColors) {
+      const vars = ['--html', '--css', '--js', '--bts', '--cloud', '--react', '--icon'];
+      vars.forEach((v, i) => style.setProperty(v, thgColors[i]));
 
-        if (expressIcon) expressIcon.src = iconSrc;
-        if (skillsExpressIcon) skillsExpressIcon.src = iconSrc;
-      }
-    });
-  }, []);
+      // Performance: Removed --theme-input-filter and --language-input-filter updates
+      // as they cause heavy repaints on large layers.
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('selectedTheme');
-    if (savedTheme) {
-      setSelectedTheme(savedTheme);
-      updateThemeStyles(savedTheme);
+      // DOM-specific logic preserved but checked for existence
+      const iconSrc = (theme === 'moon' || theme === 'sunset') ? '/SVG/expressw.svg' : '/SVG/express.svg';
+      ['first-project-express-icon', 'skills-express-icon'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.src = iconSrc;
+      });
     }
-  }, [updateThemeStyles]);
-
-  // Memoized toggle functions to prevent re-creation on every render
-  const toggleMenu = useCallback(() => {
-    setIsMenuOpen(prev => !prev);
-    setIsLanguageOpen(false);
-    setIsThemeOpen(false);
   }, []);
 
-  const toggleLanguage = useCallback(() => {
-    setIsLanguageOpen(prev => !prev);
-    setIsMenuOpen(false);
-    setIsThemeOpen(false);
+  // Initialize rootRef and load saved theme
+  useLayoutEffect(() => {
+    rootRef.current = document.documentElement;
+    const savedTheme = storage.get('selectedTheme');
+    if (savedTheme && THEMES[savedTheme]) {
+      setSelectedTheme(savedTheme);
+      applyThemeStyles(savedTheme);
+    }
+  }, [applyThemeStyles]);
+
+  // Handle outside clicks to close menus
+  useEffect(() => {
+    if (!activeMenu) return;
+
+    const handleCaptureClick = () => setActiveMenu(null);
+    document.addEventListener('click', handleCaptureClick);
+    return () => document.removeEventListener('click', handleCaptureClick);
+  }, [activeMenu]);
+
+  // Memoized handlers
+  const toggleMenu = useCallback((e) => {
+    e.stopPropagation();
+    setActiveMenu(prev => (prev === 'menu' ? null : 'menu'));
   }, []);
 
-  const toggleThemeMenu = useCallback(() => {
-    setIsThemeOpen(prev => !prev);
-    setIsMenuOpen(false);
-    setIsLanguageOpen(false);
+  const toggleLanguage = useCallback((e) => {
+    e.stopPropagation();
+    setActiveMenu(prev => (prev === 'language' ? null : 'language'));
   }, []);
 
-  const closeMenus = useCallback(() => {
-    setIsMenuOpen(false);
-    setIsLanguageOpen(false);
-    setIsThemeOpen(false);
+  const toggleThemeMenu = useCallback((e) => {
+    e.stopPropagation();
+    setActiveMenu(prev => (prev === 'theme' ? null : 'theme'));
   }, []);
 
-  // Memoized theme change handler
+  const closeMenus = useCallback(() => setActiveMenu(null), []);
+
   const handleThemeChange = useCallback((theme) => {
     setSelectedTheme(theme);
-    localStorage.setItem('selectedTheme', theme);
-    updateThemeStyles(theme);
-    setIsThemeOpen(false);
-  }, [updateThemeStyles]);
+    storage.set('selectedTheme', theme);
+    applyThemeStyles(theme);
+    setActiveMenu(null);
+  }, [applyThemeStyles]);
 
-  // Memoized language change handler
   const handleLanguageChange = useCallback((language) => {
     setSelectedLanguage(language);
-    setIsLanguageOpen(false);
-
-    const routes = {
-      en: '/en/',
-      es: '/es/',
-      fr: '/fr/',
-      pt: '/pt/'
-    };
-
-    if (routes[language]) {
-      window.location.href = routes[language];
+    setActiveMenu(null);
+    if (ROUTES[language]) {
+      window.location.href = ROUTES[language];
     }
   }, []);
 
+  // Derived state for better clarity
+  const isMenuOpen = activeMenu === 'menu';
+  const isLanguageOpen = activeMenu === 'language';
+  const isThemeOpen = activeMenu === 'theme';
+  const anyOpen = !!activeMenu;
+
   return (
-    <div className={`navbar ${isMenuOpen || isLanguageOpen || isThemeOpen ? 'menu-open' : ''}`}>
-      <div
-        className={`menu-overlay ${isMenuOpen || isLanguageOpen || isThemeOpen ? 'open' : ''}`}
-        onClick={closeMenus}
-      ></div>
-      <div className="line"></div>
+    <div className={`navbar ${anyOpen ? 'menu-open' : ''}`}>
+      <div className={`menu-overlay ${anyOpen ? 'open' : ''}`} onClick={closeMenus} />
+      <div className="line" />
       <nav className="navbar">
         <div className="container">
           <div className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
             <div className="menu-title">Menu</div>
-            <a href="#about">
-              <button id='about-navbar' onClick={closeMenus}>{t('about-navbar')}</button>
-            </a>
-            <a href="#projects">
-              <button id='projects-navbar' onClick={closeMenus}>{t('projects-navbar')}</button>
-            </a>
-            <a href="#skills">
-              <button id='skills-navbar' onClick={closeMenus}>{t('skills-navbar')}</button>
-            </a>
-            <a href="#contact">
-              <button id='contact-navbar' onClick={closeMenus}>{t('contact-navbar')}</button>
-            </a>
+            <a href="#about"><button id="about-navbar" onClick={closeMenus}>{t('about-navbar')}</button></a>
+            <a href="#projects"><button id="projects-navbar" onClick={closeMenus}>{t('projects-navbar')}</button></a>
+            <a href="#skills"><button id="skills-navbar" onClick={closeMenus}>{t('skills-navbar')}</button></a>
+            <a href="#contact"><button id="contact-navbar" onClick={closeMenus}>{t('contact-navbar')}</button></a>
           </div>
 
           <button className="menu-toggle" aria-label="Abrir menú" onClick={toggleMenu}>
             <div className={`hamburger ${isMenuOpen ? 'open' : ''}`}>
-              <span></span>
-              <span></span>
-              <span></span>
+              <span /><span /><span />
             </div>
           </button>
 
           <div className="navbar-actions">
             <div className="theme-select-container">
               <img
-                src={`../${selectedTheme}.webp`}
+                src={`/${selectedTheme}.webp`}
                 alt="Tema actual"
                 className="theme-input"
                 onClick={toggleThemeMenu}
               />
               <div className={`theme-options ${isThemeOpen ? 'open' : ''}`}>
-                <div id='theme-navbar' className="theme-title">Theme</div>
-                <div className="theme-option" onClick={() => handleThemeChange('moon')}>
-                  <img src="../moon.webp" alt="Moon" />
-                  <span id='moon-navbar'>{t('moon-navbar')}</span>
-                  <ColorCircles theme="moon" />
-                </div>
-                <div className="theme-option" onClick={() => handleThemeChange('sun')}>
-                  <img src="../sun.webp" alt="Sun" />
-                  <span id='sun-navbar'>{t('sun-navbar')}</span>
-                  <ColorCircles theme="sun" />
-                </div>
-                <div className="theme-option" onClick={() => handleThemeChange('sunset')}>
-                  <img src="../sunset.webp" alt="Sunset" />
-                  <span id='sunset-navbar'>{t('sunset-navbar')}</span>
-                  <ColorCircles theme="sunset" />
-                </div>
-                <div className="theme-option" onClick={() => handleThemeChange('sunrise')}>
-                  <img src="../sunrise.webp" alt="Sunrise" />
-                  <span id='sunrise-navbar'>{t('sunrise-navbar')}</span>
-                  <ColorCircles theme="sunrise" />
-                </div>
+                <div id="theme-navbar" className="theme-title">Theme</div>
+                {Object.keys(THEMES).map(themeKey => (
+                  <div key={themeKey} className="theme-option" onClick={() => handleThemeChange(themeKey)}>
+                    <img src={`/${themeKey}.webp`} alt={themeKey} />
+                    <span id={`${themeKey}-navbar`}>{t(`${themeKey}-navbar`)}</span>
+                    <ColorCircles theme={themeKey} />
+                  </div>
+                ))}
               </div>
             </div>
 
             <div className="language-select-container">
               <div className="idioma">
-                <img
-                  src="/SVG/language.svg"
-                  alt="Idioma"
-                  className="language-input"
-                  onClick={toggleLanguage}
-                />
+                <img src="/SVG/language.svg" alt="Idioma" className="language-input" onClick={toggleLanguage} />
               </div>
               <div className={`language-options ${isLanguageOpen ? 'open' : ''}`}>
-                <div id='language-navbar' className="language-title">Language</div>
-                <label>
-                  <input
-                    id='englishh'
-                    type="radio"
-                    value="english"
-                    checked={selectedLanguage === 'english'}
-                    onChange={() => handleLanguageChange('en')}
-                  />
-                  <img src="/SVG/uk.svg" alt="English" />
-                  English
-                </label>
-                <label>
-                  <input
-                    id='spanishh'
-                    type="radio"
-                    value="spanish"
-                    checked={selectedLanguage === 'spanish'}
-                    onChange={() => handleLanguageChange('es')}
-                  />
-                  <img src="/SVG/spain.svg" alt="Español" />
-                  Español
-                </label>
-                <label>
-                  <input
-                    id='frenchh'
-                    type="radio"
-                    value="french"
-                    checked={selectedLanguage === 'french'}
-                    onChange={() => handleLanguageChange('fr')}
-                  />
-                  <img src="/SVG/france.svg" alt="Français" />
-                  Français
-                </label>
-                <label>
-                  <input
-                    id='portuguesee'
-                    type="radio"
-                    value="portuguese"
-                    checked={selectedLanguage === 'portuguese'}
-                    onChange={() => handleLanguageChange('pt')}
-                  />
-                  <img src="/SVG/brazil.svg" alt="Português" />
-                  Português
-                </label>
+                <div id="language-navbar" className="language-title">Language</div>
+                {[
+                  { id: 'englishh', val: 'en', label: 'English', icon: '/SVG/uk.svg' },
+                  { id: 'spanishh', val: 'es', label: 'Español', icon: '/SVG/spain.svg' },
+                  { id: 'frenchh', val: 'fr', label: 'Français', icon: '/SVG/france.svg' },
+                  { id: 'portuguesee', val: 'pt', label: 'Português', icon: '/SVG/brazil.svg' },
+                ].map(l => (
+                  <label key={l.val}>
+                    <input
+                      id={l.id}
+                      type="radio"
+                      name="lang"
+                      value={l.val}
+                      checked={selectedLanguage === l.val}
+                      onChange={() => handleLanguageChange(l.val)}
+                    />
+                    <img src={l.icon} alt={l.label} />
+                    {l.label}
+                  </label>
+                ))}
               </div>
             </div>
           </div>
@@ -275,4 +250,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default React.memo(Navbar);

@@ -1,52 +1,58 @@
-document.getElementById('copy-btn').addEventListener('click', function () {
-  // Obtener el valor del campo de texto
-  var emailInput = document.getElementById('email');
-  var textToCopy = emailInput.value;
+// ---------- COPIAR EMAIL ----------
+const copyBtn = document.getElementById("copy-btn");
+const emailInput = document.getElementById("email");
+const copyBtnSpan = copyBtn.querySelector("span");
+const copiedText = copyBtn.dataset.copiedText || "Copied";
 
-  // Usar la API del portapapeles
-  navigator.clipboard.writeText(textToCopy).then(() => {
-    // Cambiar el texto del botón al texto localizado
-    var span = this.querySelector('span');
-    var originalText = span.textContent;
-    var copiedText = this.dataset.copiedText || 'Copied';
-    span.textContent = copiedText;
+let restoreTimeout = null;
 
-    // Volver al texto original después de 2 segundos
-    setTimeout(() => {
-      span.textContent = originalText;
-    }, 2000);
-  }).catch(err => {
-    console.error('Error al copiar el texto:', err);
-  });
+copyBtn.addEventListener("click", function () {
+  const textToCopy = emailInput.value;
+
+  navigator.clipboard.writeText(textToCopy)
+    .then(() => {
+      const originalText = copyBtnSpan.textContent;
+
+      copyBtnSpan.textContent = copiedText;
+
+      if (restoreTimeout) clearTimeout(restoreTimeout);
+
+      restoreTimeout = setTimeout(function () {
+        copyBtnSpan.textContent = originalText;
+      }, 2000);
+    })
+    .catch(function (err) {
+      console.error("Error al copiar:", err);
+    });
 });
 
 
 
-// Obtener el modal, la imagen y el botón de cierre
-var modal = document.getElementById("imageModal");
-var modalImg = document.querySelector(".modalImage");
-var closeBtn = document.getElementsByClassName("close")[0];
+// ---------- MODAL DE IMÁGENES ----------
 
-// Funcionalidad para las imágenes de las certificaciones
-document.querySelectorAll(".certifications img").forEach(function (img) {
-  img.onclick = function () {
-    modal.style.display = "flex";
-    modalImg.src = this.src;
-  };
-});
+const modal = document.getElementById("imageModal");
+const modalImg = document.querySelector(".modalImage");
+const closeBtn = document.querySelector(".close");
 
-// Botón de cierre
-closeBtn.onclick = function (event) {
-  event.stopPropagation();
-  modal.style.display = "none";  // Cerrar el modal
-};
+document.addEventListener("click", function (e) {
+  const target = e.target;
 
-// Cerrar el modal al hacer clic fuera de la imagen
-modal.onclick = function (event) {
-  if (event.target === modal) {
-    modal.style.display = "none";
+  if (target.matches(".certifications img")) {
+    modalImg.src = target.src;
+    modal.classList.add("visible");
   }
-};
+});
+
+closeBtn.addEventListener("click", function (e) {
+  e.stopPropagation();
+  modal.classList.remove("visible");
+});
+
+modal.addEventListener("click", function (e) {
+  if (e.target === modal) {
+    modal.classList.remove("visible");
+  }
+});
 
 
 
@@ -82,14 +88,14 @@ inputs.forEach(input => {
   input.addEventListener('mouseenter', () => {
     cursorDot.style.width = '12px';
     cursorDot.style.height = '12px';
-    cursorDot.style.backgroundColor = 'var(--color-texto)'; // Cambiar color si se desea
-    cursorDot.style.opacity = '0.8'; // Establecer opacidad (ajustar el valor según lo desees)
+    cursorDot.style.backgroundColor = 'var(--color-texto)';
+    cursorDot.style.opacity = '0.8';
   });
 
   input.addEventListener('mouseleave', () => {
     cursorDot.style.width = '25px';
     cursorDot.style.height = '25px';
-    cursorDot.style.backgroundColor = 'var(--color-texto)'; // Restaurar color original
+    cursorDot.style.backgroundColor = 'var(--color-texto)';
   });
 });
 

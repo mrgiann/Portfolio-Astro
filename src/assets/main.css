@@ -712,15 +712,14 @@ a {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 100;
+    /* Increased to ensure it stays on top without excessive stacking context */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.24);
-    z-index: 50;
-    backdrop-filter: blur(0.625rem);
-    filter: pixelate(0.625rem);
+    background-color: rgba(0, 0, 0, 0.85);
+    /* Solid dark RGBA instead of blur */
     padding: 20px;
     box-sizing: border-box;
     justify-content: center;
@@ -742,6 +741,18 @@ a {
     }
 
 }
+
+#imageModal {
+    display: none;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+
+#imageModal.visible {
+    display: flex;
+    opacity: 1;
+}
+
 
 .close {
     color: var(--color-texto);
